@@ -13,6 +13,8 @@ interface GitHubData {
   years: string;
   loading: boolean;
   error: boolean;
+  featuredProjects: Array<{name: string, description: string}>;
+  technologies: string[];
 }
 
 const Technology = () => {
@@ -23,7 +25,9 @@ const Technology = () => {
     contributions: '500+',
     years: '6',
     loading: true,
-    error: false
+    error: false,
+    featuredProjects: [],
+    technologies: []
   });
   
   const { toast } = useToast();
@@ -53,13 +57,43 @@ const Technology = () => {
           (currentDate.getTime() - createdAt.getTime()) / (1000 * 60 * 60 * 24 * 365)
         );
         
+        // Extract technologies from repositories
+        const techSet = new Set<string>();
+        reposData.forEach((repo: any) => {
+          if (repo.language && repo.language !== 'null') {
+            techSet.add(repo.language);
+          }
+        });
+        
+        // Get top technologies (limited to 10)
+        const topTechnologies = Array.from(techSet).slice(0, 10);
+        
+        // Get featured projects (non-forked, with descriptions, sorted by stars)
+        const featuredRepos = reposData
+          .filter((repo: any) => !repo.fork && repo.description)
+          .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
+          .slice(0, 4)
+          .map((repo: any) => ({
+            name: repo.name,
+            description: repo.description
+          }));
+        
         setGithubData(prev => ({
           ...prev,
           username: userData.login,
           role: userData.bio || 'Medical AI Researcher & Developer', // Use bio if available
           repositories: reposData.length.toString(),
           years: yearsOnGitHub.toString(),
-          loading: false
+          loading: false,
+          featuredProjects: featuredRepos.length > 0 ? featuredRepos : [
+            {name: 'MedicalImaging-AI', description: 'Deep learning for radiology'},
+            {name: 'EHR-NLP-Analytics', description: 'Clinical text mining'},
+            {name: 'BiomedViz', description: 'Interactive visualization for research'},
+            {name: 'Health-ML-Platform', description: 'Predictive modeling framework'}
+          ],
+          technologies: topTechnologies.length > 0 ? topTechnologies : [
+            'Python', 'TensorFlow', 'PyTorch', 'JavaScript', 'React', 'R', 'SQL'
+          ]
         }));
         
         toast({
@@ -183,23 +217,18 @@ const Technology = () => {
                     <div>
                       <div className="text-sm font-medium mb-2">Featured Projects</div>
                       <ul className="text-sm text-muted-foreground space-y-1">
-                        <li>• MedicalImaging-AI: Deep learning for radiology</li>
-                        <li>• EHR-NLP-Analytics: Clinical text mining</li>
-                        <li>• BiomedViz: Interactive visualization for research</li> 
-                        <li>• Health-ML-Platform: Predictive modeling framework</li>
+                        {githubData.featuredProjects.map((project, idx) => (
+                          <li key={idx}>• {project.name}: {project.description}</li>
+                        ))}
                       </ul>
                     </div>
                     
                     <div>
                       <div className="text-sm font-medium mb-2">Technologies</div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Python</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">TensorFlow</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">PyTorch</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">JavaScript</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">React</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">R</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">SQL</span>
+                        {githubData.technologies.map((tech, idx) => (
+                          <span key={idx} className="text-xs px-2 py-1 bg-slate-100 rounded-full">{tech}</span>
+                        ))}
                       </div>
                     </div>
                   </div>
