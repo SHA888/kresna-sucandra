@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ExternalLink, Briefcase, GraduationCap, Users } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -17,11 +16,6 @@ const LinkedInProfile = () => {
             </svg>
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <img 
-              src="https://media.licdn.com/dms/image/D5603AQFUClxf6t65dg/profile-displayphoto-shrink_800_800/0/1686132185447?e=1715817600&v=beta&t=9g9r4zBn2Zv9CGy9MOJjz6I7LXfbzk19c3RIrJtDZIc" 
-              alt="Dr. I Made Agus Kresna Sucandra" 
-              className="w-20 h-20 rounded-full border-2 border-white object-cover"
-            />
             <div className="text-left">
               <h3 className="text-xl font-semibold">Dr. I Made Agus Kresna Sucandra</h3>
               <CardDescription className="text-muted-foreground">
