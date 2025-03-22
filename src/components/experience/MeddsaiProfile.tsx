@@ -1,14 +1,13 @@
-
 import React from 'react';
 import { ExternalLink, Activity, Code, Users, Globe } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
-
 const MeddsaiProfile = () => {
-  return (
-    <div className="w-full">
-      <Card className="border border-slate-200 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '300ms' }}>
+  return <div className="w-full">
+      <Card className="border border-slate-200 overflow-hidden animate-fade-in opacity-0" style={{
+      animationDelay: '300ms'
+    }}>
         <CardHeader className="bg-[#005EB8]/10 pb-6">
           <div className="flex items-center justify-between mb-4">
             <CardTitle className="text-xl">MEDDSAI.org</CardTitle>
@@ -17,7 +16,7 @@ const MeddsaiProfile = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-xl font-semibold">Medical Department of Data Science and Artificial Intelligence</h3>
+            <h3 className="text-xl font-semibold">Division of Data Science and Artificial Intelligence</h3>
             <CardDescription className="text-muted-foreground">
               Leading innovation in healthcare through data science and AI applications
             </CardDescription>
@@ -95,20 +94,13 @@ const MeddsaiProfile = () => {
 
         <CardFooter className="bg-slate-50 border-t border-slate-100">
           <Button asChild variant="outline" className="w-full bg-white hover:bg-slate-50 border-[#005EB8] text-[#005EB8] hover:text-[#005EB8]">
-            <a 
-              href="https://meddsai.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2"
-            >
+            <a href="https://meddsai.org/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
               <span>Visit MEDDSAI Website</span>
               <ExternalLink size={16} />
             </a>
           </Button>
         </CardFooter>
       </Card>
-    </div>
-  );
+    </div>;
 };
-
 export default MeddsaiProfile;
