@@ -46,6 +46,35 @@ export const useGitHubData = () => {
         }
         const reposData = await reposResponse.json();
         
+        // Fetch pinned repositories using the GraphQL API
+        const pinnedReposResponse = await fetch('https://api.github.com/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' // Note: ideally we would use a token here, but for now we'll rely on fallbacks
+          },
+          body: JSON.stringify({
+            query: `{
+              user(login: "SHA888") {
+                pinnedItems(first: 4, types: REPOSITORY) {
+                  nodes {
+                    ... on Repository {
+                      name
+                      description
+                    }
+                  }
+                }
+              }
+            }`
+          })
+        });
+        
+        let pinnedRepos = [];
+        if (pinnedReposResponse.ok) {
+          const pinnedData = await pinnedReposResponse.json();
+          pinnedRepos = pinnedData?.data?.user?.pinnedItems?.nodes || [];
+        }
+        
         // Calculate years on GitHub based on account creation date
         const createdAt = new Date(userData.created_at);
         const currentDate = new Date();
@@ -65,15 +94,20 @@ export const useGitHubData = () => {
         // Get top technologies (limited to 10)
         const topTechnologies = Array.from(techSet).slice(0, 10);
         
-        // Get featured projects (non-forked, with descriptions, sorted by stars)
-        const featuredRepos = reposData
-          .filter((repo: any) => !repo.fork && repo.description)
-          .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
-          .slice(0, 4)
-          .map((repo: any) => ({
-            name: repo.name,
-            description: repo.description
-          }));
+        // Use pinned repos as featured projects if available, otherwise fall back to starred repos
+        let featuredRepos = pinnedRepos;
+        
+        // If no pinned repos are available, fall back to top starred repos
+        if (featuredRepos.length === 0) {
+          featuredRepos = reposData
+            .filter((repo: any) => !repo.fork && repo.description)
+            .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
+            .slice(0, 4)
+            .map((repo: any) => ({
+              name: repo.name,
+              description: repo.description
+            }));
+        }
         
         setGithubData(prev => ({
           ...prev,
