@@ -94,11 +94,9 @@ const Publications = () => {
                   />
                 </div>
                 <div className="flex items-center gap-3 mb-2">
-                  <img 
-                    src="https://d.researchgate.net/profile_pic/resize90x110/default_profile_picture.jpg" 
-                    alt="Dr. I Made Agus Kresna Sucandra" 
-                    className="w-16 h-16 rounded-full border-2 border-white"
-                  />
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                    <BookOpen className="w-8 h-8 text-primary" />
+                  </div>
                   <div>
                     <h4 className="font-semibold">Dr. I Made Agus Kresna Sucandra</h4>
                     <p className="text-sm text-muted-foreground">Medical Researcher</p>
