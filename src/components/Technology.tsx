@@ -154,10 +154,10 @@ const Technology = () => {
                     <div>
                       <div className="text-sm font-medium mb-2">Featured Projects</div>
                       <ul className="text-sm text-muted-foreground space-y-1">
-                        <li>• MedVision-AI: CT scan analysis tool</li>
-                        <li>• HealthTrack: Patient monitoring dashboard</li>
-                        <li>• GenomicML: DNA sequence prediction model</li>
-                        <li>• MedNotes-NLP: Clinical notes processing system</li>
+                        <li>• MedicalImageProcessing: Deep learning for medical imaging</li>
+                        <li>• NLP-ClinicalText: Analysis of medical records</li>
+                        <li>• HealthcareDataAnalytics: Predictive modeling for patient outcomes</li>
+                        <li>• BiomedicalVisualization: Interactive dashboards for research data</li>
                       </ul>
                     </div>
                     
@@ -167,10 +167,10 @@ const Technology = () => {
                         <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Python</span>
                         <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">TensorFlow</span>
                         <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">PyTorch</span>
+                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">JavaScript</span>
                         <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">React</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Next.js</span>
                         <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">R</span>
-                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">MongoDB</span>
+                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">SQL</span>
                       </div>
                     </div>
                   </div>
