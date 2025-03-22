@@ -5,8 +5,18 @@ import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
 import { useToast } from './ui/use-toast';
 
+interface GitHubData {
+  username: string;
+  role: string;
+  repositories: string;
+  contributions: string;
+  years: string;
+  loading: boolean;
+  error: boolean;
+}
+
 const Technology = () => {
-  const [githubData, setGithubData] = useState({
+  const [githubData, setGithubData] = useState<GitHubData>({
     username: 'SHA888',
     role: 'Medical AI Researcher & Developer',
     repositories: '25+',
@@ -19,26 +29,42 @@ const Technology = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Simulating GitHub API call
     const fetchGitHubData = async () => {
       try {
-        // In a real implementation, we would fetch from GitHub API
-        // const response = await fetch('https://api.github.com/users/SHA888');
-        // const data = await response.json();
+        // Fetch GitHub user data
+        const response = await fetch('https://api.github.com/users/SHA888');
+        if (!response.ok) {
+          throw new Error('Failed to fetch GitHub user data');
+        }
+        const userData = await response.json();
         
-        // For now, we'll simulate a successful API response after a delay
-        setTimeout(() => {
-          setGithubData(prev => ({
-            ...prev,
-            loading: false
-          }));
-          
-          toast({
-            title: "Profile loaded",
-            description: "GitHub profile information loaded successfully.",
-          });
-        }, 1500);
+        // Fetch repositories data to count them
+        const reposResponse = await fetch('https://api.github.com/users/SHA888/repos');
+        if (!reposResponse.ok) {
+          throw new Error('Failed to fetch GitHub repositories');
+        }
+        const reposData = await reposResponse.json();
+        
+        // Calculate years on GitHub based on account creation date
+        const createdAt = new Date(userData.created_at);
+        const currentDate = new Date();
+        const yearsOnGitHub = Math.floor((currentDate - createdAt) / (1000 * 60 * 60 * 24 * 365));
+        
+        setGithubData(prev => ({
+          ...prev,
+          username: userData.login,
+          role: userData.bio || 'Medical AI Researcher & Developer', // Use bio if available
+          repositories: reposData.length.toString(),
+          years: yearsOnGitHub.toString(),
+          loading: false
+        }));
+        
+        toast({
+          title: "Profile loaded",
+          description: "GitHub profile information loaded successfully.",
+        });
       } catch (error) {
+        console.error('Error fetching GitHub data:', error);
         setGithubData(prev => ({
           ...prev,
           loading: false,
@@ -154,10 +180,10 @@ const Technology = () => {
                     <div>
                       <div className="text-sm font-medium mb-2">Featured Projects</div>
                       <ul className="text-sm text-muted-foreground space-y-1">
-                        <li>• MedicalImageProcessing: Deep learning for medical imaging</li>
-                        <li>• NLP-ClinicalText: Analysis of medical records</li>
-                        <li>• HealthcareDataAnalytics: Predictive modeling for patient outcomes</li>
-                        <li>• BiomedicalVisualization: Interactive dashboards for research data</li>
+                        <li>• MedicalImaging-AI: Deep learning for radiology</li>
+                        <li>• EHR-NLP-Analytics: Clinical text mining</li>
+                        <li>• BiomedViz: Interactive visualization for research</li> 
+                        <li>• Health-ML-Platform: Predictive modeling framework</li>
                       </ul>
                     </div>
                     
