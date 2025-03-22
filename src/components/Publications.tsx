@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ExternalLink, BookOpen, Quote } from 'lucide-react';
+import { ExternalLink, BookOpen, Quote, File, Edit3 } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Publications = () => {
@@ -13,6 +13,72 @@ const Publications = () => {
             <p className="section-subtitle">
               Selected research papers and publications in medical and technological fields.
             </p>
+          </div>
+
+          {/* Morton Journal widget */}
+          <div className="w-full mb-8">
+            <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>
+              <div className="bg-primary/10 p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-semibold">Morton Journal</h3>
+                  <Edit3 className="w-6 h-6 text-primary" />
+                </div>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                    <File className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Managing Editor</h4>
+                    <p className="text-sm text-muted-foreground">Scientific Journal</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6">
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <div className="text-sm font-medium mb-2">About the Journal</div>
+                    <p className="text-sm text-muted-foreground">
+                      Morton Journal is a peer-reviewed scientific publication focusing on advancements
+                      in medicine, technology, and interdisciplinary research.
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium mb-2">Editorial Responsibilities</div>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Manuscript review and editorial decisions</li>
+                      <li>• Author correspondence and guidance</li>
+                      <li>• Publication quality control and standards</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 mb-6">
+                  <Button variant="outline" asChild className="w-full">
+                    <a 
+                      href="https://preview--morton-journal.lovable.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <span>Preview Site</span>
+                      <ExternalLink size={16} />
+                    </a>
+                  </Button>
+                  <Button asChild className="w-full">
+                    <a 
+                      href="https://mortonjournal.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <span>Official Journal Site</span>
+                      <ExternalLink size={16} />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* ResearchGate widget - now full width */}
