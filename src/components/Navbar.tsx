@@ -57,48 +57,50 @@ const Navbar = () => {
             </a>
           ))}
           
-          {/* Blog Dropdown */}
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors bg-transparent hover:bg-transparent">Blog</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-3 p-4">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a
-                          href="https://medium.com/@drkresna"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        >
-                          <div className="text-sm font-medium">Medium</div>
-                          <p className="text-xs leading-snug text-muted-foreground">
-                            Medical AI and technology insights
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a
-                          href="https://substack.com/@drkresna"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        >
-                          <div className="text-sm font-medium">Substack</div>
-                          <p className="text-xs leading-snug text-muted-foreground">
-                            Research findings and publications
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+          {/* Blog Dropdown - Positioned to avoid edge cutoff */}
+          <div className="relative z-50">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors bg-transparent hover:bg-transparent">Blog</NavigationMenuTrigger>
+                  <NavigationMenuContent className="absolute right-0 w-[220px]">
+                    <ul className="grid w-full gap-3 p-4">
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <a
+                            href="https://medium.com/@drkresna"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium">Medium</div>
+                            <p className="text-xs leading-snug text-muted-foreground">
+                              Medical AI and technology insights
+                            </p>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <a
+                            href="https://substack.com/@drkresna"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium">Substack</div>
+                            <p className="text-xs leading-snug text-muted-foreground">
+                              Research findings and publications
+                            </p>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
