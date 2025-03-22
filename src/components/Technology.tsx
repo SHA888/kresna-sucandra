@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ExternalLink, Github, Code, Terminal } from 'lucide-react';
+import { ExternalLink, Github, Code, Terminal, BookOpen } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Technology = () => {
@@ -29,7 +29,7 @@ const Technology = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold">SHA888</h4>
-                    <p className="text-sm text-muted-foreground">Software Developer</p>
+                    <p className="text-sm text-muted-foreground">Medical AI Researcher & Developer</p>
                   </div>
                 </div>
               </div>
@@ -38,45 +38,48 @@ const Technology = () => {
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="text-center">
                     <div className="flex items-center justify-center mb-2 text-primary">
-                      <Code className="w-5 h-5" />
+                      <BookOpen className="w-5 h-5" />
                     </div>
-                    <div className="text-2xl font-bold">15</div>
+                    <div className="text-2xl font-bold">25+</div>
                     <div className="text-xs text-muted-foreground">Repositories</div>
                   </div>
                   <div className="text-center">
                     <div className="flex items-center justify-center mb-2 text-primary">
                       <Terminal className="w-5 h-5" />
                     </div>
-                    <div className="text-2xl font-bold">320+</div>
+                    <div className="text-2xl font-bold">500+</div>
                     <div className="text-xs text-muted-foreground">Contributions</div>
                   </div>
                   <div className="text-center">
                     <div className="flex items-center justify-center mb-2 text-primary">
                       <Github className="w-5 h-5" />
                     </div>
-                    <div className="text-2xl font-bold">4</div>
+                    <div className="text-2xl font-bold">6</div>
                     <div className="text-xs text-muted-foreground">Years</div>
                   </div>
                 </div>
                 
                 <div className="space-y-4 mb-6">
                   <div>
-                    <div className="text-sm font-medium mb-2">Key Projects</div>
+                    <div className="text-sm font-medium mb-2">Featured Projects</div>
                     <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Medical data visualization tools</li>
-                      <li>• Healthcare analytics dashboards</li>
-                      <li>• AI-assisted diagnostic applications</li>
+                      <li>• Medical NLP for clinical notes analysis</li>
+                      <li>• Healthcare ML prediction models</li>
+                      <li>• Radiology image processing applications</li>
+                      <li>• Biomedical data visualization tools</li>
                     </ul>
                   </div>
                   
                   <div>
                     <div className="text-sm font-medium mb-2">Technologies</div>
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">JavaScript</span>
                       <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Python</span>
-                      <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">React</span>
                       <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">TensorFlow</span>
+                      <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">PyTorch</span>
+                      <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">JavaScript</span>
+                      <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">React</span>
                       <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">R</span>
+                      <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">SQL</span>
                     </div>
                   </div>
                 </div>
