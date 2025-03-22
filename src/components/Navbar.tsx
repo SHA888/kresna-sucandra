@@ -10,6 +10,12 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,50 +63,40 @@ const Navbar = () => {
             </a>
           ))}
           
-          {/* Blog Dropdown - Positioned to avoid edge cutoff */}
-          <div className="relative z-50">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors bg-transparent hover:bg-transparent">Blog</NavigationMenuTrigger>
-                  <NavigationMenuContent className="absolute right-0 w-[220px]">
-                    <ul className="grid w-full gap-3 p-4">
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <a
-                            href="https://medium.com/@drkresna"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          >
-                            <div className="text-sm font-medium">Medium</div>
-                            <p className="text-xs leading-snug text-muted-foreground">
-                              Medical AI and technology insights
-                            </p>
-                          </a>
-                        </NavigationMenuLink>
-                      </li>
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <a
-                            href="https://substack.com/@drkresna"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          >
-                            <div className="text-sm font-medium">Substack</div>
-                            <p className="text-xs leading-snug text-muted-foreground">
-                              Research findings and publications
-                            </p>
-                          </a>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
+          {/* Blog Dropdown - Using DropdownMenu instead of NavigationMenu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors flex items-center gap-1 focus:outline-none">
+              Blog <ChevronDown className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem asChild>
+                <a
+                  href="https://medium.com/@drkresna"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col w-full"
+                >
+                  <span className="font-medium">Medium</span>
+                  <span className="text-xs text-muted-foreground mt-1">
+                    Medical AI and technology insights
+                  </span>
+                </a>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <a
+                  href="https://substack.com/@drkresna"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col w-full"
+                >
+                  <span className="font-medium">Substack</span>
+                  <span className="text-xs text-muted-foreground mt-1">
+                    Research findings and publications
+                  </span>
+                </a>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Mobile Menu Button */}
