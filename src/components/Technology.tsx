@@ -45,10 +45,13 @@ const Technology = () => {
         }
         const reposData = await reposResponse.json();
         
-        // Calculate years on GitHub based on account creation date
+        // Calculate years on GitHub based on account creation date - fixed calculation
         const createdAt = new Date(userData.created_at);
         const currentDate = new Date();
-        const yearsOnGitHub = Math.floor((currentDate - createdAt) / (1000 * 60 * 60 * 24 * 365));
+        // Convert dates to timestamps in milliseconds for arithmetic operation
+        const yearsOnGitHub = Math.floor(
+          (currentDate.getTime() - createdAt.getTime()) / (1000 * 60 * 60 * 24 * 365)
+        );
         
         setGithubData(prev => ({
           ...prev,
