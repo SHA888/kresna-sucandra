@@ -1,6 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +46,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-8 items-center">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -47,6 +56,49 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
+          
+          {/* Blog Dropdown */}
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors bg-transparent hover:bg-transparent">Blog</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-3 p-4">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href="https://medium.com/@drkresna"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium">Medium</div>
+                          <p className="text-xs leading-snug text-muted-foreground">
+                            Medical AI and technology insights
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href="https://substack.com/@drkresna"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium">Substack</div>
+                          <p className="text-xs leading-snug text-muted-foreground">
+                            Research findings and publications
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         {/* Mobile Menu Button */}
@@ -73,6 +125,31 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            
+            {/* Mobile Blog Links */}
+            <div className="py-2">
+              <div className="text-foreground/80 mb-2">Blog</div>
+              <div className="pl-4 flex flex-col space-y-3">
+                <a
+                  href="https://medium.com/@drkresna"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Medium
+                </a>
+                <a
+                  href="https://substack.com/@drkresna"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Substack
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}
