@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ExternalLink, BookOpen, Quote, File, Edit3 } from 'lucide-react';
+import { ExternalLink, BookOpen, Quote, File, Edit3, Github, Code } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Publications = () => {
