@@ -15,8 +15,8 @@ const Publications = () => {
             </p>
           </div>
 
-          <div className="max-w-md mx-auto">
-            {/* ResearchGate widget */}
+          {/* ResearchGate widget - now full width */}
+          <div className="w-full">
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '500ms' }}>
               <div className="bg-primary/10 p-6">
                 <div className="flex items-center justify-between mb-4">
