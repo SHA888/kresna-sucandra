@@ -178,7 +178,7 @@ const Technology = () => {
 
                 <Button asChild className="w-full" disabled={githubData.loading}>
                   <a 
-                    href="https://github.com/SHA888"
+                    href="https://github.com/SHA888/SHA888/blob/main/README.md"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2"
