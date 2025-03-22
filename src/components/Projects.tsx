@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MessageSquare, Flask, Wine, Music, ExternalLink } from 'lucide-react';
+import { MessageSquare, TestTube, Wine, Music, ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -12,7 +12,7 @@ const Projects = () => {
       link: '#',
     },
     {
-      icon: Flask,
+      icon: TestTube,
       title: 'Medical AI Tools',
       category: 'AI · Healthcare',
       description: 'Suite of AI-powered diagnostic and decision support tools for critical care.',
