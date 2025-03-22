@@ -95,7 +95,17 @@ const Experience = () => {
                         <div className="text-muted-foreground">RSUP Ngoerah, Bali • Present</div>
                       </li>
                       <li className="text-sm">
-                        <div className="font-medium">Division Head of Data Science and AI</div>
+                        <div className="font-medium flex items-center gap-1.5">
+                          <span>Division Head of Data Science and AI</span>
+                          <a 
+                            href="https://meddsai.org/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-[#0077B5] hover:text-[#0077B5]/80 inline-flex items-center"
+                          >
+                            <ExternalLink size={14} />
+                          </a>
+                        </div>
                         <div className="text-muted-foreground">Department of Anesthesiology and Intensive Care • 2021 - Present</div>
                       </li>
                       <li className="text-sm">
