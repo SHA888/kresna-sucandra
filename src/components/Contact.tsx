@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Github, Linkedin, ExternalLink, Mail, Music } from 'lucide-react';
 
@@ -31,10 +30,10 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="section-title">Contact</h2>
             <p className="section-subtitle">
               Let's connect and explore collaboration opportunities.
@@ -118,7 +117,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <footer className="mt-24 pt-10 border-t border-slate-200">
+      <footer className="mt-16 pt-8 border-t border-slate-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">

@@ -35,10 +35,10 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 bg-slate-50">
+    <section id="projects" className="py-16 bg-slate-50"> {/* Reduced padding from py-24 to py-16 */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12"> {/* Reduced margin from mb-16 to mb-12 */}
             <h2 className="section-title">Projects</h2>
             <p className="section-subtitle">
               A selection of my work across healthcare, technology, and creative domains.

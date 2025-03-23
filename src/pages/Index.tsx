@@ -14,12 +14,14 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Publications />
-      <Technology />
-      <Contact />
+      <div className="space-y-12"> {/* Added a container with reduced spacing */}
+        <About />
+        <Experience />
+        <Projects />
+        <Publications />
+        <Technology />
+        <Contact />
+      </div>
     </div>
   );
 };

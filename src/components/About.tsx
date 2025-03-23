@@ -27,10 +27,10 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-16 bg-white"> {/* Reduced padding from py-24 to py-16 */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12"> {/* Reduced margin from mb-16 to mb-12 */}
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle">
               A forward-thinker at the intersection of medicine, technology, and creativity.
