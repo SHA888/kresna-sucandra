@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -65,13 +64,6 @@ const Hero = () => {
             </a>
           </div>
         </div>
-      </div>
-      
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="flex flex-col items-center text-foreground/60 hover:text-foreground transition-colors">
-          <span className="text-sm font-medium mb-2">Scroll Down</span>
-          <ArrowDown size={20} />
-        </a>
       </div>
     </section>
   );
