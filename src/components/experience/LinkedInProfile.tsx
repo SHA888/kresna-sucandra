@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ExternalLink, Briefcase, GraduationCap, Users } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -6,7 +7,7 @@ import { Separator } from '../ui/separator';
 
 const LinkedInProfile = () => {
   return (
-    <div className="w-full mb-8">
+    <div className="w-full"> {/* Removed mb-8 class */}
       <Card className="border border-slate-200 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>
         <CardHeader className="bg-[#0077B5]/10 pb-6">
           <div className="flex items-center justify-between mb-4">

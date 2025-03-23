@@ -14,7 +14,7 @@ const Experience = () => {
             </p>
           </div>
 
-          <div className="space-y-6"> {/* Added spacing container with reduced gap */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed from space-y-6 to grid layout */}
             {/* LinkedIn Profile Widget */}
             <LinkedInProfile />
 
