@@ -1,8 +1,9 @@
 import React from 'react';
-import { ExternalLink, Activity, Code, Users, Globe } from 'lucide-react';
+import { ExternalLink, Activity, Code, Users, Globe, Briefcase } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
+
 const MeddsaiProfile = () => {
   return <div className="w-full">
       <Card className="border border-slate-200 overflow-hidden animate-fade-in opacity-0" style={{
@@ -12,7 +13,7 @@ const MeddsaiProfile = () => {
           <div className="flex items-center justify-between mb-4">
             <CardTitle className="text-xl">MEDDSAI.org</CardTitle>
             <div className="p-1 rounded-full bg-white text-[#005EB8] border border-[#005EB8]">
-              <Globe size={24} />
+              <Briefcase size={24} />
             </div>
           </div>
           <div className="flex flex-col">
@@ -103,4 +104,5 @@ const MeddsaiProfile = () => {
       </Card>
     </div>;
 };
+
 export default MeddsaiProfile;
