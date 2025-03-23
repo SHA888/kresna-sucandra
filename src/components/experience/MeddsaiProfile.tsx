@@ -21,7 +21,10 @@ const MeddsaiProfile = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-xl font-semibold">Division of Data Science and Artificial Intelligence</h3>
+            <h3 className="text-xl font-semibold flex items-center gap-2">
+              <BookOpen size={18} className="text-[#005EB8]" />
+              Division of Data Science and Artificial Intelligence
+            </h3>
             <CardDescription className="text-muted-foreground">
               Leading innovation in healthcare through data science and AI applications
             </CardDescription>
