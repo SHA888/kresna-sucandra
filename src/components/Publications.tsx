@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ExternalLink, BookOpen, Quote, File, Edit3, Github, Code } from 'lucide-react';
 import { Button } from './ui/button';
@@ -55,25 +54,13 @@ const Publications = () => {
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 mb-6">
-                    <Button variant="outline" asChild className="w-full">
-                      <a
-                        href="https://preview--morton-journal.lovable.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <span>Preview Site</span>
-                        <ExternalLink size={16} />
-                      </a>
-                    </Button>
                     <Button asChild className="w-full">
                       <a
-                        href="https://mortonjournal.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="#"
                         className="flex items-center justify-center gap-2"
+                        onClick={(e) => e.preventDefault()}
                       >
-                        <span>Official Journal Site</span>
+                        <span>Official Journal Site - Coming Soon</span>
                         <ExternalLink size={16} />
                       </a>
                     </Button>
