@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Shield, Brain, Database, Palette } from 'lucide-react';
+import { Shield, Brain, Database, Palette, ArrowRight } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 const About = () => {
   const focusAreas = [
@@ -27,10 +28,10 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-16 bg-white"> {/* Reduced padding from py-24 to py-16 */}
+    <section id="about" className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12"> {/* Reduced margin from mb-16 to mb-12 */}
+          <div className="text-center mb-12">
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle">
               A forward-thinker at the intersection of medicine, technology, and creativity.
@@ -38,17 +39,29 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Image or avatar */}
-            <div className="relative aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-100 to-sky-50"></div>
-              <div className="absolute top-4 left-4 right-4 bottom-4 rounded-xl overflow-hidden">
-                {/* Here you would add an actual image later */}
-                <div className="w-full h-full flex items-center justify-center bg-slate-200 text-slate-400">
-                  <span className="text-sm">Professional Photo</span>
+            {/* Enhanced visual element */}
+            <div className="relative">
+              <div className="absolute -z-10 w-full h-full rounded-2xl bg-gradient-to-tr from-blue-100/80 to-sky-50/80 blur-sm transform -rotate-3"></div>
+              <Card className="overflow-hidden border-0 shadow-lg">
+                <div className="relative aspect-square overflow-hidden rounded-t-lg">
+                  <img 
+                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
+                    alt="Dr. I Made Agus Kresna Sucandra" 
+                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-lg glass-dark rotate-6"></div>
-              <div className="absolute -top-4 -left-4 w-16 h-16 rounded-lg glass-dark -rotate-12"></div>
+                <CardContent className="p-6 bg-white">
+                  <h3 className="text-xl font-semibold mb-2">Dr. I Made Agus Kresna Sucandra</h3>
+                  <p className="text-muted-foreground mb-4">Anesthesiologist, Intensivist & Technologist</p>
+                  <div className="flex items-center text-primary/90 text-sm font-medium hover:text-primary transition-colors cursor-pointer group">
+                    <span>View full biography</span>
+                    <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </CardContent>
+              </Card>
+              <div className="absolute -z-10 -bottom-4 -right-4 w-24 h-24 rounded-lg glass-dark rotate-6"></div>
+              <div className="absolute -z-10 -top-4 -left-4 w-16 h-16 rounded-lg glass-dark -rotate-12"></div>
             </div>
 
             {/* Bio text */}
