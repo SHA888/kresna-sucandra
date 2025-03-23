@@ -45,7 +45,7 @@ const About = () => {
               <Card className="overflow-hidden border-0 shadow-lg">
                 <div className="relative aspect-square overflow-hidden rounded-t-lg">
                   <img 
-                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
+                    src="/lovable-uploads/b8a0b35e-3732-4690-a450-256a4b582297.png" 
                     alt="Dr. I Made Agus Kresna Sucandra" 
                     className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
                   />
