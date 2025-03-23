@@ -2,6 +2,7 @@
 import React from 'react';
 import { Shield, Brain, Database, Palette, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const About = () => {
   const focusAreas = [
@@ -39,29 +40,27 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Enhanced visual element */}
-            <div className="relative">
-              <div className="absolute -z-10 w-full h-full rounded-2xl bg-gradient-to-tr from-blue-100/80 to-sky-50/80 blur-sm transform -rotate-3"></div>
-              <Card className="overflow-hidden border-0 shadow-lg">
-                <div className="relative aspect-square overflow-hidden rounded-t-lg">
-                  <img 
+            {/* Enhanced visual element with circular frame */}
+            <div className="relative flex justify-center">
+              <div className="absolute -z-10 w-[320px] h-[320px] rounded-full bg-gradient-to-tr from-blue-100/80 to-sky-50/80 blur-sm transform -rotate-3"></div>
+              <div className="relative">
+                <Avatar className="w-[300px] h-[300px] border-4 border-white shadow-xl">
+                  <AvatarImage 
                     src="/lovable-uploads/b8a0b35e-3732-4690-a450-256a4b582297.png" 
-                    alt="Dr. I Made Agus Kresna Sucandra" 
-                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
+                    alt="Dr. I Made Agus Kresna Sucandra"
+                    className="object-cover transition-transform hover:scale-105 duration-700" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                </div>
-                <CardContent className="p-6 bg-white">
-                  <h3 className="text-xl font-semibold mb-2">Dr. I Made Agus Kresna Sucandra</h3>
-                  <p className="text-muted-foreground mb-4">Anesthesiologist, Intensivist & Technologist</p>
-                  <div className="flex items-center text-primary/90 text-sm font-medium hover:text-primary transition-colors cursor-pointer group">
-                    <span>View full biography</span>
-                    <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </CardContent>
-              </Card>
-              <div className="absolute -z-10 -bottom-4 -right-4 w-24 h-24 rounded-lg glass-dark rotate-6"></div>
-              <div className="absolute -z-10 -top-4 -left-4 w-16 h-16 rounded-lg glass-dark -rotate-12"></div>
+                  <AvatarFallback>
+                    DR
+                  </AvatarFallback>
+                </Avatar>
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full glass-dark rotate-6 -z-10"></div>
+                <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full glass-dark -rotate-12 -z-10"></div>
+              </div>
+              <div className="absolute bottom-2 w-full max-w-[270px] bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md">
+                <h3 className="text-lg font-semibold">Dr. I Made Agus Kresna Sucandra</h3>
+                <p className="text-muted-foreground text-sm">Anesthesiologist, Intensivist & Technologist</p>
+              </div>
             </div>
 
             {/* Bio text */}
