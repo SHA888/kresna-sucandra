@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { ExternalLink, Activity, Code, Users, Globe, Briefcase } from 'lucide-react';
+import { ExternalLink, Activity, Code, Users, Globe, Briefcase, Medal, BookOpen } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
@@ -9,7 +10,10 @@ const MeddsaiProfile = () => {
       <Card className="border border-slate-200 overflow-hidden animate-fade-in opacity-0" style={{
       animationDelay: '300ms'
     }}>
-        <CardHeader className="bg-[#005EB8]/10 pb-6">
+        <CardHeader className="bg-[#005EB8]/10 pb-6 relative">
+          <div className="absolute top-0 right-0 opacity-10 text-[#005EB8]">
+            <Medal size={120} strokeWidth={1} />
+          </div>
           <div className="flex items-center justify-between mb-4">
             <CardTitle className="text-xl">MEDDSAI.org</CardTitle>
             <div className="p-1 rounded-full bg-white text-[#005EB8] border border-[#005EB8]">
