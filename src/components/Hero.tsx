@@ -33,10 +33,10 @@ const Hero = () => {
           </div>
           
           <div className="h-14 mb-8 animate-fade-in opacity-0 animate-delay-200">
-            <div className="relative text-xl sm:text-2xl font-medium text-foreground/80">
+            <div className="relative text-xl sm:text-2xl font-medium text-foreground/80 text-left">
               I'm a{' '}
               <span
-                className="text-primary inline-block min-w-52 transition-all duration-300"
+                className="text-primary inline-block min-w-52 transition-all duration-300 text-left"
                 key={currentRoleIndex}
               >
                 {roles[currentRoleIndex]}
