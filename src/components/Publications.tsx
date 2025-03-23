@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ExternalLink, BookOpen, Quote, File, Edit3, Github, Code } from 'lucide-react';
 import { Button } from './ui/button';
@@ -14,9 +15,9 @@ const Publications = () => {
             </p>
           </div>
 
-          <div className="space-y-6"> {/* Added spacing container with reduced gap */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed from space-y-6 to grid layout */}
             {/* Morton Journal widget */}
-            <div className="w-full mb-8">
+            <div className="w-full">
               <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>
                 <div className="bg-primary/10 p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -81,7 +82,7 @@ const Publications = () => {
               </div>
             </div>
 
-            {/* ResearchGate widget - now full width */}
+            {/* ResearchGate widget */}
             <div className="w-full">
               <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '500ms' }}>
                 <div className="bg-primary/10 p-6">
