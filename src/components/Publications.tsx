@@ -86,7 +86,7 @@ const Publications = () => {
                       <BookOpen className="w-8 h-8 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold">Dr. I Made Agus Kresna Sucandra</h4>
+                      <h4 className="font-semibold">Dr. Kresna Sucandra, MD</h4>
                       <p className="text-sm text-muted-foreground">Medical Researcher</p>
                     </div>
                   </div>

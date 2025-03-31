@@ -18,7 +18,7 @@ const LinkedInProfile = () => {
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="text-left">
-              <h3 className="text-xl font-semibold">Dr. I Made Agus Kresna Sucandra</h3>
+              <h3 className="text-xl font-semibold">Dr. Kresna Sucandra, MD</h3>
               <CardDescription className="text-muted-foreground">
                 Division Head of Data Science and AI | Critical Care Intensivist | Tech Co-founder
               </CardDescription>

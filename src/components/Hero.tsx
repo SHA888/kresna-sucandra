@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const roles = ['Anesthesiologist', 'Intensivist', 'Researcher', 'Software Engineer', 'Technologist'];
+  const roles = ['Anesthesiologist', 'Intensivist', 'AI Researcher', 'Blockchain Developer', 'Technologist'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,8 +27,7 @@ const Hero = () => {
               Medicine · AI · Web3 · Creativity
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
-              Dr. I Made Agus
-              <span className="block">Kresna Sucandra</span>
+              <span className="block">Dr. Kresna Sucandra, MD</span>
             </h1>
           </div>
           

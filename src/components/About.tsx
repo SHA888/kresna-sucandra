@@ -47,7 +47,7 @@ const About = () => {
                 <Avatar className="w-[300px] h-[300px] border-4 border-white shadow-xl">
                   <AvatarImage 
                     src="/lovable-uploads/b8a0b35e-3732-4690-a450-256a4b582297.png" 
-                    alt="Dr. I Made Agus Kresna Sucandra"
+                    alt="Dr. Kresna Sucandra, MD"
                     className="object-cover transition-transform hover:scale-105 duration-700" 
                   />
                   <AvatarFallback>
@@ -58,17 +58,17 @@ const About = () => {
                 <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full glass-dark -rotate-12 -z-10"></div>
               </div>
               <div className="w-full bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md">
-                <h3 className="text-lg font-semibold">Dr. I Made Agus Kresna Sucandra</h3>
-                <p className="text-muted-foreground text-sm">Anesthesiologist, Intensivist & Technologist</p>
+                <h3 className="text-lg font-semibold">Dr. Kresna Sucandra, MD</h3>
+                <p className="text-muted-foreground text-sm">Intensivist Anesthesiologist, AI Researcher, Blockchain Developer</p>
               </div>
             </div>
 
             {/* Bio text */}
             <div className="space-y-6">
               <p className="text-lg leading-relaxed">
-                I currently serve as the Head of Critical Care Fellowship and Division Head of Data Science 
+                I currently serve as the Head of Critical Care Fellowship Program and Division Head of Data Science 
                 and Artificial Intelligence at the Department of Anesthesiology and Intensive Care at RSUP 
-                Ngoerah in Bali, Indonesia.
+                Ngoerah, Udayana University Medical School in Bali, Indonesia.
               </p>
               <p className="text-lg leading-relaxed">
                 Beyond my clinical practice, I'm a tech co-founder involved in multiple startups, 

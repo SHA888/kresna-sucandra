@@ -25,7 +25,7 @@ interface KaggleData {
 const KaggleWidget = ({ username }: KaggleWidgetProps) => {
   const [kaggleData, setKaggleData] = useState<KaggleData>({
     username: username,
-    name: 'Dr. I Made Agus Kresna Sucandra',
+    name: 'Dr. Kresna Sucandra, MD',
     title: 'Medical Data Scientist',
     competitions: '8',
     datasets: '5',
@@ -114,7 +114,7 @@ const KaggleWidget = ({ username }: KaggleWidgetProps) => {
               <div className="text-xs text-muted-foreground">Notebooks</div>
             </div>
           </div>
-          
+
           {kaggleData.loading ? (
             <div className="space-y-4 mb-6">
               <div>
@@ -123,7 +123,7 @@ const KaggleWidget = ({ username }: KaggleWidgetProps) => {
                 <Skeleton className="h-3 w-full mb-1" />
                 <Skeleton className="h-3 w-3/4 mb-1" />
               </div>
-              
+
               <div>
                 <Skeleton className="h-4 w-24 mb-2" />
                 <div className="flex flex-wrap gap-2">
@@ -144,7 +144,7 @@ const KaggleWidget = ({ username }: KaggleWidgetProps) => {
                   <li>• Created {kaggleData.datasets} Medical Datasets</li>
                 </ul>
               </div>
-              
+
               <div>
                 <div className="text-sm font-medium mb-2">Skills & Expertise</div>
                 <div className="flex flex-wrap gap-2">
@@ -157,7 +157,7 @@ const KaggleWidget = ({ username }: KaggleWidgetProps) => {
           )}
 
           <Button asChild className="w-full" disabled={kaggleData.loading}>
-            <a 
+            <a
               href={`https://www.kaggle.com/${kaggleData.username}`}
               target="_blank"
               rel="noopener noreferrer"
