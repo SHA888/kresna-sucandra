@@ -36,7 +36,7 @@ const NeuralNetworkAnimation = () => {
     let transitionProgress = 0;
     let lastTime = 0;
     let electricityOffset = 0;
-    let lastPathwayActivation = a0;
+    let lastPathwayActivation = 0; // Initialize to 0 instead of undefined 'a0'
 
     // Animation loop
     const animate = (timestamp: number) => {
