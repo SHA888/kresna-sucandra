@@ -55,10 +55,7 @@ const About = () => {
                 and Artificial Intelligence at the Department of Anesthesiology and Intensive Care at RSUP 
                 Ngoerah, Udayana University Medical School in Bali, Indonesia.
               </p>
-              <p className="text-lg leading-relaxed">
-                Beyond my clinical practice, I'm a tech co-founder involved in multiple startups, 
-                a contributor to Medical AI Digest, and an avid creator in AI, Web3, and digital art spaces.
-              </p>
+              <p className="text-lg leading-relaxed">Beyond my clinical practice, I'm a tech co-founder involved in multiple startups, a contributor to Medical AI Digest, and an avid creator in AI, Web3, Cyber Security, and digital art spaces.</p>
               <p className="text-lg leading-relaxed">
                 My passion lies in bridging the gap between cutting-edge technology and practical 
                 healthcare applications, with a forward-thinking approach to solving complex problems.
