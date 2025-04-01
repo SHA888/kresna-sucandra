@@ -127,10 +127,7 @@ export const useGitHubData = () => {
           ]
         }));
         
-        toast({
-          title: "Profile loaded",
-          description: "GitHub profile information loaded successfully.",
-        });
+        // Success toast notification removed
       } catch (error) {
         console.error('Error fetching GitHub data:', error);
         setGithubData(prev => ({
