@@ -1,29 +1,22 @@
-
 import React, { useState, useEffect } from 'react';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
-
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const roles = ['Anesthesiologist', 'Intensivist', 'AI Researcher', 'Blockchain Developer', 'Technologist'];
-  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentRoleIndex(prevIndex => (prevIndex + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-  
-  return (
-    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
+  return <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
       {/* Animated background */}
       <AnimatedHeroBackground />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-6 animate-fade-in opacity-0 animate-delay-100">
-            <span className="inline-block py-1 px-3 rounded-full font-medium bg-primary/10 text-primary mb-4 text-base">
-              Medicine · AI · Web3 · Creativity
-            </span>
+            <span className="inline-block py-1 px-3 rounded-full font-medium bg-primary/10 text-primary mb-4 text-base">Medicine · AI · Web3 · Security</span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
               <span className="block">Dr. Kresna Sucandra, MD</span>
             </h1>
@@ -57,8 +50,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
