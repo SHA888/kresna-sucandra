@@ -30,16 +30,16 @@ const Hero = () => {
               <span className="block">Dr. Kresna Sucandra, MD</span>
             </h1>
             
-            {/* Added the new standout text */}
+            {/* Cybermedical Polymath subtitle */}
             <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary italic mb-2">
               Cybermedical Polymath
             </h2>
           </div>
           
           <div className="h-14 mb-8 animate-fade-in opacity-0 animate-delay-200">
-            <div className="relative text-xl sm:text-2xl font-medium text-center">
+            <div className="relative text-xl sm:text-2xl text-center">
               <span
-                className="text-secondary font-medium inline-block min-w-52 transition-all duration-300 text-center"
+                className="text-blue-600 font-medium inline-block min-w-52 transition-all duration-300"
                 key={currentRoleIndex}
               >
                 {roles[currentRoleIndex]}
