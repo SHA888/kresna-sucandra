@@ -10,6 +10,7 @@ type Node = {
   isActive: boolean;
   activationTime: number;
   lastActivated: number;
+  pathwayColor?: string; // Add color property
 };
 
 export const createNodes = (nodeCount: number, canvasWidth: number, canvasHeight: number): Node[] => {
@@ -34,16 +35,31 @@ export const createNodes = (nodeCount: number, canvasWidth: number, canvasHeight
   return nodes;
 };
 
-export const createNeuralPathways = (nodeCount: number, nodes: Node[]): number[][] => {
+// Updated interface to include colors
+export type Pathway = {
+  nodes: number[];
+  color: string;
+};
+
+export const createNeuralPathways = (nodeCount: number, nodes: Node[]): Pathway[] => {
   // Group nodes into pathways
-  const pathways: number[][] = [];
+  const pathways: Pathway[] = [];
   const usedNodes: Set<number> = new Set();
+  
+  // Pathway colors - distinct colors for each pathway
+  const pathwayColors = [
+    'rgba(72, 187, 120, 1)', // green (original)
+    'rgba(79, 70, 229, 1)',  // indigo
+    'rgba(236, 72, 153, 1)', // pink
+    'rgba(249, 115, 22, 1)', // orange
+    'rgba(16, 185, 129, 1)'  // emerald
+  ];
   
   // Create 3-5 main pathways
   const pathwayCount = Math.floor(Math.random() * 3) + 3;
   
   for (let i = 0; i < pathwayCount; i++) {
-    const pathway: number[] = [];
+    const nodeIndices: number[] = [];
     // Each pathway has 4-8 nodes
     const pathLength = Math.floor(Math.random() * 5) + 4;
     
@@ -54,14 +70,21 @@ export const createNeuralPathways = (nodeCount: number, nodes: Node[]): number[]
         nodeIndex = Math.floor(Math.random() * nodeCount);
       } while (usedNodes.has(nodeIndex));
       
-      pathway.push(nodeIndex);
+      nodeIndices.push(nodeIndex);
       usedNodes.add(nodeIndex);
+      
+      // Assign the pathway color to this node
+      const colorIndex = i % pathwayColors.length;
+      nodes[nodeIndex].pathwayColor = pathwayColors[colorIndex];
       
       // Don't use all nodes to allow some random activations
       if (usedNodes.size >= nodeCount * 0.8) break;
     }
     
-    pathways.push(pathway);
+    pathways.push({
+      nodes: nodeIndices,
+      color: pathwayColors[i % pathwayColors.length]
+    });
   }
   
   return pathways;
@@ -69,7 +92,7 @@ export const createNeuralPathways = (nodeCount: number, nodes: Node[]): number[]
 
 export const updateNodes = (
   nodes: Node[], 
-  pathways: number[][], 
+  pathways: Pathway[], 
   timestamp: number, 
   lastPathwayActivation: number,
   canvas: HTMLCanvasElement
@@ -90,9 +113,9 @@ export const updateNodes = (
   
   // Update node activation status based on pathways
   pathways.forEach(pathway => {
-    for (let i = 0; i < pathway.length - 1; i++) {
-      const currentNode = nodes[pathway[i]];
-      const nextNode = nodes[pathway[i + 1]];
+    for (let i = 0; i < pathway.nodes.length - 1; i++) {
+      const currentNode = nodes[pathway.nodes[i]];
+      const nextNode = nodes[pathway.nodes[i + 1]];
       
       // If current node is active and it's been active for a short time, activate the next node
       if (currentNode.isActive && timestamp - currentNode.activationTime > 100 + Math.random() * 100) {
@@ -108,7 +131,8 @@ export const updateNodes = (
     }
     
     // Deactivate the last node in the pathway after some time
-    const lastNode = nodes[pathway[pathway.length - 1]];
+    const lastNodeIndex = pathway.nodes[pathway.nodes.length - 1];
+    const lastNode = nodes[lastNodeIndex];
     if (lastNode && lastNode.isActive && timestamp - lastNode.activationTime > 300) {
       lastNode.isActive = false;
     }

@@ -11,6 +11,7 @@ type Node = {
   isActive: boolean;
   activationTime: number;
   lastActivated: number;
+  pathwayColor?: string; // Add color property
 };
 
 export const drawNodes = (
@@ -42,16 +43,24 @@ export const drawNodes = (
         node.x, node.y, nodeRadius * 2
       );
       
+      // Use node's pathway color if available, otherwise use default
+      const nodeColor = node.pathwayColor || 'rgba(72, 187, 120, 1)';
+      const baseColor = nodeColor.replace(/[^,]+(?=\))/, '0.9');
+      const midColor = nodeColor.replace(/[^,]+(?=\))/, '0.4');
+      const edgeColor = nodeColor.replace(/[^,]+(?=\))/, '0');
+      
       // Active nodes glow brighter and slightly different color
       if (node.isActive) {
-        glowGradient.addColorStop(0, 'rgba(72, 225, 120, 0.9)');
-        glowGradient.addColorStop(0.5, 'rgba(72, 225, 120, 0.4)');
-        glowGradient.addColorStop(1, 'rgba(72, 225, 120, 0)');
+        glowGradient.addColorStop(0, baseColor);
+        glowGradient.addColorStop(0.5, midColor);
+        glowGradient.addColorStop(1, edgeColor);
       } else {
         const opacity = 0.8 * fadeFactor;
-        glowGradient.addColorStop(0, `rgba(72, 187, 120, ${opacity})`);
-        glowGradient.addColorStop(0.5, `rgba(72, 187, 120, ${opacity * 0.3})`);
-        glowGradient.addColorStop(1, `rgba(72, 187, 120, 0)`);
+        const fadedBase = nodeColor.replace(/[^,]+(?=\))/, `${opacity}`);
+        const fadedMid = nodeColor.replace(/[^,]+(?=\))/, `${opacity * 0.3}`);
+        glowGradient.addColorStop(0, fadedBase);
+        glowGradient.addColorStop(0.5, fadedMid);
+        glowGradient.addColorStop(1, edgeColor);
       }
       
       ctx.arc(node.x, node.y, nodeRadius * 2, 0, Math.PI * 2);
@@ -64,9 +73,10 @@ export const drawNodes = (
       
       // Active nodes are brighter
       if (node.isActive) {
-        ctx.fillStyle = 'rgba(72, 225, 120, 0.95)';
+        ctx.fillStyle = baseColor;
       } else {
-        ctx.fillStyle = `rgba(72, 187, 120, ${0.9 * fadeFactor})`;
+        const opacityValue = 0.9 * fadeFactor;
+        ctx.fillStyle = nodeColor.replace(/[^,]+(?=\))/, `${opacityValue}`);
       }
       
       ctx.fill();
@@ -178,26 +188,53 @@ const drawElectricityLine = (
     ctx.lineTo(midX + offsetX, midY + offsetY);
   }
   
-  // Enhanced gradient for electricity with direction
+  // Get colors for the gradient
+  const nodeColor = node.pathwayColor || 'rgba(72, 187, 120, 1)';
+  const otherNodeColor = otherNode.pathwayColor || 'rgba(72, 187, 120, 1)';
+  
+  // Enhanced gradient for electricity with direction and colors
   const electricityGradient = ctx.createLinearGradient(node.x, node.y, otherNode.x, otherNode.y);
   
   // Direction-based colors for active connections
   if (node.isActive && !otherNode.isActive) {
-    // Flow from node to otherNode - green to bright green
-    electricityGradient.addColorStop(0, `rgba(72, 225, 120, ${distanceOpacity * activeOpacity})`);
-    electricityGradient.addColorStop(0.5, `rgba(134, 239, 172, ${distanceOpacity * activeOpacity})`);
-    electricityGradient.addColorStop(1, `rgba(72, 187, 120, ${distanceOpacity * 0.8})`);
+    // Flow from node to otherNode
+    electricityGradient.addColorStop(0, nodeColor.replace(/[^,]+(?=\))/, `${distanceOpacity * activeOpacity}`));
+    // Use a brighter middle color if they're from the same pathway
+    const midColor = (node.pathwayColor === otherNode.pathwayColor) ? 
+      nodeColor.replace(/rgba\((\d+), (\d+), (\d+)/, (match, r, g, b) => 
+        `rgba(${Math.min(255, parseInt(r) + 60)}, ${Math.min(255, parseInt(g) + 60)}, ${Math.min(255, parseInt(b) + 60)}`)
+      : 
+      `rgba(134, 239, 172, ${distanceOpacity * activeOpacity})`;
+    electricityGradient.addColorStop(0.5, midColor);
+    electricityGradient.addColorStop(1, otherNodeColor.replace(/[^,]+(?=\))/, `${distanceOpacity * 0.8}`));
   } else if (!node.isActive && otherNode.isActive) {
-    // Flow from otherNode to node - bright green to green
-    electricityGradient.addColorStop(0, `rgba(72, 187, 120, ${distanceOpacity * 0.8})`);
-    electricityGradient.addColorStop(0.5, `rgba(134, 239, 172, ${distanceOpacity * activeOpacity})`);
-    electricityGradient.addColorStop(1, `rgba(72, 225, 120, ${distanceOpacity * activeOpacity})`);
+    // Flow from otherNode to node
+    electricityGradient.addColorStop(0, nodeColor.replace(/[^,]+(?=\))/, `${distanceOpacity * 0.8}`));
+    // Use a brighter middle color if they're from the same pathway
+    const midColor = (node.pathwayColor === otherNode.pathwayColor) ? 
+      otherNodeColor.replace(/rgba\((\d+), (\d+), (\d+)/, (match, r, g, b) => 
+        `rgba(${Math.min(255, parseInt(r) + 60)}, ${Math.min(255, parseInt(g) + 60)}, ${Math.min(255, parseInt(b) + 60)}`)
+      : 
+      `rgba(134, 239, 172, ${distanceOpacity * activeOpacity})`;
+    electricityGradient.addColorStop(0.5, midColor);
+    electricityGradient.addColorStop(1, otherNodeColor.replace(/[^,]+(?=\))/, `${distanceOpacity * activeOpacity}`));
   } else {
     // Normal flow or both active
     const opacity = distanceOpacity * (node.isActive && otherNode.isActive ? 1.5 : fadeFactor * 0.8);
-    electricityGradient.addColorStop(0, `rgba(72, 187, 120, ${opacity})`);
-    electricityGradient.addColorStop(0.5, `rgba(134, 239, 172, ${opacity * 1.1})`);
-    electricityGradient.addColorStop(1, `rgba(72, 187, 120, ${opacity})`);
+    
+    // If they're from the same pathway, use their color; otherwise use neutral colors
+    if (node.pathwayColor && otherNode.pathwayColor && node.pathwayColor === otherNode.pathwayColor) {
+      electricityGradient.addColorStop(0, nodeColor.replace(/[^,]+(?=\))/, `${opacity}`));
+      const enhancedColor = nodeColor.replace(/rgba\((\d+), (\d+), (\d+)/, (match, r, g, b) => 
+        `rgba(${Math.min(255, parseInt(r) + 40)}, ${Math.min(255, parseInt(g) + 40)}, ${Math.min(255, parseInt(b) + 40)}`)
+      electricityGradient.addColorStop(0.5, enhancedColor.replace(/[^,]+(?=\))/, `${opacity * 1.1}`));
+      electricityGradient.addColorStop(1, nodeColor.replace(/[^,]+(?=\))/, `${opacity}`));
+    } else {
+      // Different pathways - use a blend or neutral color
+      electricityGradient.addColorStop(0, nodeColor.replace(/[^,]+(?=\))/, `${opacity}`));
+      electricityGradient.addColorStop(0.5, `rgba(134, 239, 172, ${opacity * 1.1})`);
+      electricityGradient.addColorStop(1, otherNodeColor.replace(/[^,]+(?=\))/, `${opacity}`));
+    }
   }
   
   ctx.strokeStyle = electricityGradient;
@@ -205,8 +242,9 @@ const drawElectricityLine = (
   ctx.stroke();
   
   // Add glow effect to the electricity - brighter for active connections
+  const glowColor = node.pathwayColor || otherNode.pathwayColor || 'rgba(72, 187, 120, 0.6)';
   const glowIntensity = node.isActive || otherNode.isActive ? 10 : 6;
-  ctx.shadowColor = 'rgba(72, 187, 120, 0.6)';
+  ctx.shadowColor = glowColor;
   ctx.shadowBlur = glowIntensity * fadeFactor;
   ctx.stroke();
   ctx.shadowBlur = 0;

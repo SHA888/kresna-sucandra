@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { drawNodes, drawConnections } from './neuralNetworkUtils';
-import { createNodes, createNeuralPathways, updateNodes } from './nodeLogic';
+import { createNodes, createNeuralPathways, updateNodes, Pathway } from './nodeLogic';
 
 const NeuralNetworkAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -36,7 +36,7 @@ const NeuralNetworkAnimation = () => {
     let transitionProgress = 0;
     let lastTime = 0;
     let electricityOffset = 0;
-    let lastPathwayActivation = 0;
+    let lastPathwayActivation = a0;
 
     // Animation loop
     const animate = (timestamp: number) => {
@@ -78,15 +78,15 @@ const NeuralNetworkAnimation = () => {
       requestAnimationFrame(animate);
     };
     
-    const updatePathwayActivation = (timestamp: number, lastActivation: number, pathways: number[][], nodeArray: any[]) => {
+    const updatePathwayActivation = (timestamp: number, lastActivation: number, pathways: Pathway[], nodeArray: any[]) => {
       if (timestamp - lastActivation > 800) {
         // Choose a random pathway to activate
         const pathwayIndex = Math.floor(Math.random() * pathways.length);
         const pathway = pathways[pathwayIndex];
         
         // Activate the first node in the pathway
-        if (pathway.length > 0) {
-          const firstNodeIndex = pathway[0];
+        if (pathway.nodes.length > 0) {
+          const firstNodeIndex = pathway.nodes[0];
           if (firstNodeIndex < nodeArray.length) {
             nodeArray[firstNodeIndex].isActive = true;
             nodeArray[firstNodeIndex].activationTime = timestamp;
