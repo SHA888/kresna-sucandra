@@ -1,19 +1,22 @@
+
 import React, { useState, useEffect } from 'react';
+import AnimatedHeroBackground from './AnimatedHeroBackground';
+
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const roles = ['Anesthesiologist', 'Intensivist', 'AI Researcher', 'Blockchain Developer', 'Technologist'];
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentRoleIndex(prevIndex => (prevIndex + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-  return <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white -z-10"></div>
-      
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30 animate-float"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-blue-50 rounded-full blur-3xl opacity-30 animate-float animation-delay-200"></div>
+  
+  return (
+    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
+      {/* Animated background */}
+      <AnimatedHeroBackground />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
@@ -54,6 +57,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
