@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 const AnimatedHeroBackground = () => {
@@ -28,14 +27,14 @@ const AnimatedHeroBackground = () => {
     const nodes: { x: number; y: number; radius: number; vx: number; vy: number; connections: number[] }[] = [];
     const nodeCount = Math.min(50, Math.floor(canvas.width * canvas.height / 15000));
     
-    // Create initial nodes
+    // Create initial nodes with faster velocity
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 2 + 1,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
+        vx: (Math.random() - 0.5) * 0.5, // Increased from 0.3 to 0.5
+        vy: (Math.random() - 0.5) * 0.5, // Increased from 0.3 to 0.5
         connections: []
       });
     }
@@ -55,9 +54,9 @@ const AnimatedHeroBackground = () => {
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Update transition
+      // Update transition - faster transition (reduced from 100 to 70)
       if (transitionProgress < 1000) {
-        transitionProgress += deltaTime / 100;
+        transitionProgress += deltaTime / 70; 
         if (transitionProgress >= 1000) {
           transitionProgress = 0;
           animationMode = animationMode === 'neural' ? 'blockchain' : 'neural';
