@@ -29,6 +29,11 @@ const Hero = () => {
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
               <span className="block">Dr. Kresna Sucandra, MD</span>
             </h1>
+            
+            {/* Added the new standout text */}
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary italic mb-2">
+              Cybermedical Polymath
+            </h2>
           </div>
           
           <div className="h-14 mb-8 animate-fade-in opacity-0 animate-delay-200">
