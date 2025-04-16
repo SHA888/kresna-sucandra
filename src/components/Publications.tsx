@@ -40,8 +40,11 @@ const Publications = () => {
                     <div>
                       <div className="text-sm font-medium mb-2">About the Journal</div>
                       <p className="text-sm text-muted-foreground">
-                        UJAMI Journal is a peer-reviewed scientific publication focusing on advancements
-                        in medicine, technology, and interdisciplinary research.
+                        The Udayana Journal of Augmented Medical Intelligence (UJAMI) is dedicated 
+                        to advancing human-centered augmented intelligence (AugI) in medicine. UJAMI 
+                        publishes interdisciplinary research on real-time clinical decision support, 
+                        ethical AI integration, and global health applications, emphasizing 
+                        transparency, equity, and the patient-physician relationship.
                       </p>
                     </div>
                     <div>
