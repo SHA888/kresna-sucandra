@@ -1,7 +1,78 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Github, Linkedin, ExternalLink, Mail, Music } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Form validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+    
+    try {
+      // Using FormSubmit.co service to send email
+      const response = await fetch(`https://formsubmit.co/kresnasucandra@unud.ac.id`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: "New Contact Form Submission",
+        }),
+      });
+      
+      if (response.ok) {
+        toast({
+          title: "Success!",
+          description: "Your message has been sent successfully.",
+        });
+        // Reset form
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const socialLinks = [
     {
       name: 'GitHub',
@@ -71,7 +142,7 @@ const Contact = () => {
             </div>
 
             <div className="glass p-8 rounded-xl animate-fade-in opacity-0" style={{ animationDelay: '100ms' }}>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
                     Name
@@ -79,6 +150,8 @@ const Contact = () => {
                   <input
                     type="text"
                     id="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     required
                   />
@@ -90,6 +163,8 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     required
                   />
@@ -101,15 +176,18 @@ const Contact = () => {
                   <textarea
                     id="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     required
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all hover:bg-primary/90 shadow-sm hover:shadow"
+                  disabled={isSubmitting}
+                  className="w-full px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all hover:bg-primary/90 shadow-sm hover:shadow disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
