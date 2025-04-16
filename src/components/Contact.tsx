@@ -36,8 +36,8 @@ const Contact = () => {
     }
     
     try {
-      // Using FormSubmit.co service to send email
-      const response = await fetch(`https://formsubmit.co/kresnasucandra@unud.ac.id`, {
+      // Using FormSubmit.co service to send email - adding ajax=true to get JSON response
+      const response = await fetch(`https://formsubmit.co/ajax/kresnasucandra@unud.ac.id`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,18 +48,21 @@ const Contact = () => {
           email: formData.email,
           message: formData.message,
           _subject: "New Contact Form Submission",
+          _captcha: "false", // Disable captcha for testing
         }),
       });
+      
+      const data = await response.json();
       
       if (response.ok) {
         toast({
           title: "Success!",
-          description: "Your message has been sent successfully.",
+          description: data.message || "Your message has been sent successfully.",
         });
         // Reset form
         setFormData({ name: '', email: '', message: '' });
       } else {
-        throw new Error("Form submission failed");
+        throw new Error(data.message || "Form submission failed");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
