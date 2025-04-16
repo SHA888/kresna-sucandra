@@ -48,7 +48,7 @@ const Contact = () => {
           email: formData.email,
           message: formData.message,
           _subject: "New Contact Form Submission",
-          _captcha: "false", // Disable captcha for testing
+          // Captcha is now back to default behavior (removed _captcha: "false")
         }),
       });
       
