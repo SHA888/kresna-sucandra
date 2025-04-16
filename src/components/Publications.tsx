@@ -1,26 +1,27 @@
+
 import React from 'react';
 import { ExternalLink, BookOpen, Quote, File, Edit3, Github, Code } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Publications = () => {
   return (
-    <section id="publications" className="py-16 bg-slate-50"> {/* Reduced padding from py-24 to py-16 */}
+    <section id="publications" className="py-16 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12"> {/* Reduced margin from mb-16 to mb-12 */}
+          <div className="text-center mb-12">
             <h2 className="section-title">Publications</h2>
             <p className="section-subtitle">
               Selected research papers and publications in medical and technological fields.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed from space-y-6 to grid layout */}
-            {/* Morton Journal widget */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* UJAMI Journal widget */}
             <div className="w-full">
               <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>
                 <div className="bg-primary/10 p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold">Morton Journal</h3>
+                    <h3 className="text-xl font-semibold">UJAMI Journal</h3>
                     <Edit3 className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex items-center gap-3 mb-2">
@@ -39,7 +40,7 @@ const Publications = () => {
                     <div>
                       <div className="text-sm font-medium mb-2">About the Journal</div>
                       <p className="text-sm text-muted-foreground">
-                        Morton Journal is a peer-reviewed scientific publication focusing on advancements
+                        UJAMI Journal is a peer-reviewed scientific publication focusing on advancements
                         in medicine, technology, and interdisciplinary research.
                       </p>
                     </div>
@@ -56,11 +57,12 @@ const Publications = () => {
                   <div className="grid grid-cols-1 gap-4 mb-6">
                     <Button asChild className="w-full">
                       <a
-                        href="#"
+                        href="https://ujamijournal.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2"
-                        onClick={(e) => e.preventDefault()}
                       >
-                        <span>Official Journal Site - Coming Soon</span>
+                        <span>Official Journal Site</span>
                         <ExternalLink size={16} />
                       </a>
                     </Button>
