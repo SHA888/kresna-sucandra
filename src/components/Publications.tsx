@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ExternalLink, BookOpen, Quote, File, Edit3, Github, Code } from 'lucide-react';
 import { Button } from './ui/button';
@@ -33,121 +34,122 @@ const Publications = () => {
                     </div>
                   </div>
                 </div>
-            
-            <div className="p-6">
-              <div className="space-y-4 mb-6">
-                <div>
-                  <div className="text-sm font-medium mb-2">About the Journal</div>
-                  <p className="text-sm text-muted-foreground">
-                    UJAMI advances human-centered augmented intelligence (AugI) in medicine, 
-                    publishing interdisciplinary research on clinical decision support, 
-                    ethical AI integration, and global health applications.
-                  </p>
-                </div>
                 
-                <div>
-                  <div className="text-sm font-medium mb-2">Editorial Responsibilities</div>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Manuscript review and editorial decisions</li>
-                    <li>• Author correspondence and guidance</li>
-                    <li>• Publication quality control and standards</li>
-                  </ul>
+                <div className="p-6">
+                  <div className="space-y-4 mb-6">
+                    <div>
+                      <div className="text-sm font-medium mb-2">About the Journal</div>
+                      <p className="text-sm text-muted-foreground">
+                        UJAMI advances human-centered augmented intelligence (AugI) in medicine, 
+                        publishing interdisciplinary research on clinical decision support, 
+                        ethical AI integration, and global health applications.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <div className="text-sm font-medium mb-2">Editorial Responsibilities</div>
+                      <ul className="text-sm text-muted-foreground space-y-1">
+                        <li>• Manuscript review and editorial decisions</li>
+                        <li>• Author correspondence and guidance</li>
+                        <li>• Publication quality control and standards</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 gap-4 mb-6">
+                    <Button asChild className="w-full">
+                      <a
+                        href="https://ujamijournal.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <span>Official Journal Site</span>
+                        <ExternalLink size={16} />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
-              
-              <div className="grid grid-cols-1 gap-4 mb-6">
-                <Button asChild className="w-full">
-                  <a
-                    href="https://ujamijournal.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
-                  >
-                    <span>Official Journal Site</span>
-                    <ExternalLink size={16} />
-                  </a>
-                </Button>
-              </div>
             </div>
-          </div>
-        </div>
-      
-      {/* ResearchGate widget */}
-      <div className="w-full">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '500ms' }}>
-          <div className="bg-primary/10 p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold">ResearchGate</h3>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg"
-                alt="ResearchGate logo"
-                className="w-8 h-8"
-              />
-            </div>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                <BookOpen className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h4 className="font-semibold">Dr. Kresna Sucandra, MD</h4>
-                <p className="text-sm text-muted-foreground">Medical Researcher</p>
-              </div>
-            </div>
-          </div>
+          
+            {/* ResearchGate widget */}
+            <div className="w-full">
+              <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-fade-in opacity-0" style={{ animationDelay: '500ms' }}>
+                <div className="bg-primary/10 p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-semibold">ResearchGate</h3>
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg"
+                      alt="ResearchGate logo"
+                      className="w-8 h-8"
+                    />
+                  </div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                      <BookOpen className="w-8 h-8 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold">Dr. Kresna Sucandra, MD</h4>
+                      <p className="text-sm text-muted-foreground">Medical Researcher</p>
+                    </div>
+                  </div>
+                </div>
 
-          <div className="p-6">
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="text-center">
-                <div className="flex items-center justify-center mb-2 text-primary">
-                  <BookOpen className="w-5 h-5" />
+                <div className="p-6">
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="text-center">
+                      <div className="flex items-center justify-center mb-2 text-primary">
+                        <BookOpen className="w-5 h-5" />
+                      </div>
+                      <div className="text-2xl font-bold">12</div>
+                      <div className="text-xs text-muted-foreground">Publications</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex items-center justify-center mb-2 text-primary">
+                        <Quote className="w-5 h-5" />
+                      </div>
+                      <div className="text-2xl font-bold">86</div>
+                      <div className="text-xs text-muted-foreground">Citations</div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 mb-6">
+                    <div>
+                      <div className="text-xs font-medium mb-1 text-muted-foreground">h-index</div>
+                      <div className="w-full bg-slate-100 rounded-full h-2.5">
+                        <div className="bg-primary h-2.5 rounded-full" style={{ width: '40%' }}></div>
+                      </div>
+                      <div className="text-right text-xs mt-1">4</div>
+                    </div>
+                    <div>
+                      <div className="text-xs font-medium mb-1 text-muted-foreground">Research Interest</div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">AI in Medicine</span>
+                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Anesthesiology</span>
+                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Medical Education</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Button asChild className="w-full">
+                    <a
+                      href="https://www.researchgate.net/profile/I-Made-Agus-Kresna-Sucandra"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <span>View Full Profile</span>
+                      <ExternalLink size={16} />
+                    </a>
+                  </Button>
                 </div>
-                <div className="text-2xl font-bold">12</div>
-                <div className="text-xs text-muted-foreground">Publications</div>
-              </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center mb-2 text-primary">
-                  <Quote className="w-5 h-5" />
-                </div>
-                <div className="text-2xl font-bold">86</div>
-                <div className="text-xs text-muted-foreground">Citations</div>
               </div>
             </div>
-
-            <div className="space-y-3 mb-6">
-              <div>
-                <div className="text-xs font-medium mb-1 text-muted-foreground">h-index</div>
-                <div className="w-full bg-slate-100 rounded-full h-2.5">
-                  <div className="bg-primary h-2.5 rounded-full" style={{ width: '40%' }}></div>
-                </div>
-                <div className="text-right text-xs mt-1">4</div>
-              </div>
-              <div>
-                <div className="text-xs font-medium mb-1 text-muted-foreground">Research Interest</div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">AI in Medicine</span>
-                  <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Anesthesiology</span>
-                  <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">Medical Education</span>
-                </div>
-              </div>
-            </div>
-
-            <Button asChild className="w-full">
-              <a
-                href="https://www.researchgate.net/profile/I-Made-Agus-Kresna-Sucandra"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2"
-              >
-                <span>View Full Profile</span>
-                <ExternalLink size={16} />
-              </a>
-            </Button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
   );
 };
 
