@@ -44,7 +44,7 @@ const About = () => {
               </div>
               <div className="w-full bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md">
                 <h3 className="text-lg font-semibold">Dr. Kresna Sucandra, MD</h3>
-                <p className="text-muted-foreground text-sm">Intensivist Anesthesiologist, AI Researcher, Blockchain Developer</p>
+                <p className="text-muted-foreground text-sm">Intensivist Anesthesiologist, AI Researcher, Software Engineer, Blockchain Developer, Security Enthusiast</p>
               </div>
             </div>
 
