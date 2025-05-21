@@ -1,9 +1,16 @@
 
 import React from 'react';
-import { MessageSquare, TestTube, Wine, Music, ExternalLink } from 'lucide-react';
+import { MessageSquare, TestTube, Wine, Music, ExternalLink, Terminal } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
+    {
+      icon: Terminal,
+      title: 'Medi Programming Language',
+      category: 'Open-Source',
+      description: 'Medi is a modern programming language designed for medical and healthcare applications.',
+      link: 'https://github.com/MediLang/medi',
+    },
     {
       icon: MessageSquare,
       title: 'PromptPeel',
@@ -32,6 +39,14 @@ const Projects = () => {
       description: 'AI-generated music project inspired by the tranquil sounds of Bali.',
       link: 'https://www.balichillstudio.com/',
     },
+  ];
+
+  const mediLinks = [
+    { name: 'Website', url: 'https://medi-lang.org' },
+    { name: 'Documentation', url: 'https://medilang.github.io/medi' },
+    { name: 'Twitter', url: 'https://x.com/MediLangHQ' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/groups/14694015' },
+    { name: 'Discord', url: 'https://discord.gg/JxE6dD285R' },
   ];
 
   return (
@@ -72,6 +87,22 @@ const Projects = () => {
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                   <p className="text-muted-foreground">{project.description}</p>
+                  
+                  {project.title === 'Medi Programming Language' && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {mediLinks.map((link) => (
+                        <a
+                          key={link.name}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-medium text-primary bg-primary/5 hover:bg-primary/10 py-1 px-2 rounded-full transition-colors"
+                        >
+                          {link.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div className="h-1 bg-gradient-to-r from-primary/10 to-primary/30"></div>
               </div>
