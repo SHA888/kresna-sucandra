@@ -1,81 +1,8 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Github, Linkedin, ExternalLink, Mail, Music } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [id]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Form validation
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Error",
-        description: "Please fill in all fields",
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-    
-    try {
-      // Using FormSubmit.co service to send email - adding ajax=true to get JSON response
-      const response = await fetch(`https://formsubmit.co/ajax/kresnasucandra@unud.ac.id`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: "New Contact Form Submission",
-          // Captcha is now back to default behavior (removed _captcha: "false")
-        }),
-      });
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        toast({
-          title: "Success!",
-          description: data.message || "Your message has been sent successfully.",
-        });
-        // Reset form
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error(data.message || "Form submission failed");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast({
-        title: "Error",
-        description: "There was a problem sending your message. Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const socialLinks = [
     {
       name: 'GitHub',
@@ -144,54 +71,6 @@ const Contact = () => {
               </div>
             </div>
 
-            <form className="space-y-6 animate-fade-in opacity-0" style={{ animationDelay: '100ms' }} onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all hover:bg-primary/90 shadow-sm hover:shadow disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-            </form>
           </div>
         </div>
       </div>
