@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Github, Linkedin, ExternalLink, Mail, Music, MessageCircle } from 'lucide-react';
+import { Github, Linkedin, ExternalLink, Mail, Music, MessageCircle, Twitter } from 'lucide-react';
 
 const Contact = () => {
   const socialLinks = [
@@ -30,7 +30,7 @@ const Contact = () => {
     },
     {
       name: 'Twitter',
-      icon: ExternalLink,
+      icon: Twitter,
       url: 'https://x.com/ks_sha888',
       color: 'hover:text-blue-500',
     },
