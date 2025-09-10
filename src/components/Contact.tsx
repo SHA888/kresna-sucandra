@@ -43,9 +43,9 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 bg-white">
+    <section id="contact" className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="section-title">Contact</h2>
             <p className="section-subtitle">
@@ -53,28 +53,28 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div className="animate-fade-in opacity-0">
+          <div className="flex flex-col items-center space-y-8">
+            <div className="animate-fade-in opacity-0 text-center">
               <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 max-w-2xl">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
 
-              <div className="flex items-center space-x-2 mb-6">
+              <div className="flex items-center justify-center space-x-2 mb-8">
                 <Mail className="w-5 h-5 text-primary" />
                 <a href="mailto:kresnasucandra@unud.ac.id" className="text-foreground hover:text-primary transition-colors">
                   kresnasucandra@unud.ac.id
                 </a>
               </div>
 
-              <div className="flex space-x-4 mt-8">
+              <div className="flex flex-wrap justify-center gap-4">
                 {socialLinks.map((link) => (
                   <a 
                     key={link.name}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-colors ${link.color}`}
+                    className="w-12 h-12 flex items-center justify-center rounded-full bg-muted hover:bg-accent text-muted-foreground hover:text-accent-foreground transition-colors"
                     aria-label={link.name}
                   >
                     <link.icon size={20} />
