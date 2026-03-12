@@ -1,0 +1,192 @@
+---
+const projects = [
+  {
+    cat: 'Framework · Quantum-AI',
+    icon: '⚛️',
+    title: 'RAF',
+    org: 'SHA888',
+    url: 'https://github.com/SHA888/RAF',
+    desc: 'Reciprocal Acceleration Framework — a systematic framework for understanding co-evolutionary dynamics between Quantum Computing and Machine Learning. Open research.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/SHA888/RAF' },
+    ],
+    crate: false,
+  },
+  {
+    cat: 'IDE · Rust',
+    icon: '◆',
+    title: 'idep',
+    org: 'idep-editor',
+    url: 'https://idep.dev',
+    desc: 'Native Rust IDE built for thought-level control. Local-first, any AI backend, no cloud dependency. Apache 2.0.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/idep-editor/idep' },
+      { label: 'Website', href: 'https://idep.dev' },
+      { label: 'Docs', href: 'https://docs.idep.dev' },
+    ],
+    crate: false,
+  },
+  {
+    cat: 'Rust · Documents',
+    icon: '📄',
+    title: 'lontar',
+    org: 'lontar-rs',
+    url: 'https://github.com/lontar-rs/lontar',
+    desc: 'Comprehensive document generation library for Rust. Named after the lontar palm leaf — traditional Balinese manuscript medium.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/lontar-rs/lontar' },
+      { label: 'crates.io', href: 'https://crates.io/crates/lontar' },
+    ],
+    crate: true,
+  },
+  {
+    cat: 'Rust · Culture',
+    icon: '📅',
+    title: 'balinese-calendar',
+    org: 'SHA888',
+    url: 'https://github.com/SHA888/balinese-calendar',
+    desc: 'First native Rust implementation of the Balinese Saka Calendar system. Foundation of the Dedauh SaaS platform.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/SHA888/balinese-calendar' },
+      { label: 'crates.io', href: 'https://crates.io/crates/balinese-calendar' },
+    ],
+    crate: true,
+  },
+  {
+    cat: 'Rust · IoT Protocol',
+    icon: '🔌',
+    title: 'clonic',
+    org: 'Teknorakit',
+    url: 'https://github.com/Teknorakit/clonic',
+    desc: 'Wire protocol types and codec for the Zone Coordination Protocol (ZCP). Part of the TeknoRakit physical-AI ecosystem.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Teknorakit/clonic' },
+      { label: 'crates.io', href: 'https://crates.io/crates/clonic' },
+    ],
+    crate: true,
+  },
+  {
+    cat: 'Rust · AI',
+    icon: '🐟',
+    title: 'teri',
+    org: 'SHA888',
+    url: 'https://github.com/SHA888/teri',
+    desc: 'Swarm intelligence engine in Rust. Named after ikan teri (anchovy) — distributed, emergent, low-overhead.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/SHA888/teri' },
+    ],
+    crate: false,
+  },
+  {
+    cat: 'Language · Healthcare',
+    icon: '💊',
+    title: 'tolvex',
+    org: 'Tolvex',
+    url: 'https://github.com/Tolvex/tolvex',
+    desc: 'Healthcare-native programming language with FHIR/HL7 support and LLVM backend. Registered trademark in Indonesia.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Tolvex/tolvex' },
+    ],
+    crate: false,
+  },
+  {
+    cat: 'Database · Healthcare',
+    icon: '🗄️',
+    title: 'KadeDB',
+    org: 'Tolvex',
+    url: 'https://github.com/Tolvex/KadeDB',
+    desc: 'Purpose-built database engine for healthcare data, designed to work natively within the Tolvex ecosystem.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Tolvex/KadeDB' },
+    ],
+    crate: false,
+  },
+];
+---
+<section id="projects">
+  <div class="sw">
+    <div class="label">Open Source</div>
+    <h2 class="display">Code I've <em>shipped</em>.</h2>
+    <div class="projects-grid rv">
+      {projects.map((p) => (
+        <div class="proj-card">
+          <div class="proj-top">
+            <span class="proj-cat">{p.cat}</span>
+            <span class="proj-icon">{p.icon}</span>
+          </div>
+          <div class="proj-body">
+            <a href={p.url} target="_blank" rel="noopener" class="proj-title">
+              <span class="proj-org">{p.org} /</span> {p.title}
+              {p.crate && <span class="crate-badge">crates.io</span>}
+            </a>
+            <p class="proj-desc">{p.desc}</p>
+            <div class="proj-links">
+              {p.links.map((l) => (
+                <a href={l.href} target="_blank" rel="noopener" class="tag">{l.label}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #projects { background: var(--blush); border-top: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .proj-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: all 0.28s;
+  }
+  .proj-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(28,22,14,0.1); }
+
+  .proj-top {
+    padding: 1.5rem 1.5rem 1rem;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    border-bottom: 1px solid rgba(28,22,14,0.06);
+  }
+  .proj-cat {
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.18rem 0.55rem; border-radius: 100px;
+    background: var(--sand); color: var(--rust);
+    border: 1px solid rgba(155,61,26,0.2);
+  }
+  .proj-icon { font-size: 1.15rem; }
+
+  .proj-body { padding: 1rem 1.5rem 1.5rem; }
+  .proj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 500; color: var(--ink);
+    text-decoration: none; display: flex; align-items: baseline;
+    flex-wrap: wrap; gap: 0.3rem;
+    margin-bottom: 0.4rem; transition: color 0.2s; line-height: 1.3;
+  }
+  .proj-title:hover { color: var(--rust); }
+  .proj-org { font-weight: 300; color: var(--ink4); font-size: 0.9em; }
+
+  .crate-badge {
+    font-size: 0.55rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.12rem 0.45rem; border-radius: 100px;
+    background: rgba(58,107,74,0.1);
+    border: 1px solid var(--sage-m);
+    color: var(--sage-d);
+    align-self: center;
+  }
+
+  .proj-desc  { font-size: 0.79rem; color: var(--ink3); line-height: 1.75; margin-bottom: 1rem; }
+  .proj-links { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+  @media (max-width: 1024px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px)  { .projects-grid { grid-template-columns: 1fr; } }
+</style>

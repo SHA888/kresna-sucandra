@@ -1,0 +1,75 @@
+---
+---
+<section id="ventures">
+  <div class="sw">
+    <div class="label">Venture</div>
+    <h2 class="display"><em>TeknoRakit</em></h2>
+    <div class="teknorakit-card rv">
+      <div class="tk-body">
+        <div class="tk-desc">
+          <p>IoT and Physical AI education platform based in Indonesia. The RAKIT framework makes embedded systems and hardware tinkering accessible — bridging the gap between digital natives and physical computing.</p>
+          <p>Building the next generation of Indonesian hardware engineers, one board at a time.</p>
+        </div>
+        <div class="tk-links">
+          <a href="https://www.teknorakit.com/" target="_blank" rel="noopener" class="btn-rust">Visit TeknoRakit →</a>
+          <span class="vbadge ba">Active</span>
+        </div>
+      </div>
+      <div class="tk-tags">
+        <span class="tag">IoT</span>
+        <span class="tag">Physical AI</span>
+        <span class="tag">Embedded Systems</span>
+        <span class="tag">Education</span>
+        <span class="tag">Indonesia</span>
+        <span class="tag">RAKIT Framework</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #ventures { background: var(--sand); border-top: 1px solid var(--border); }
+
+  .teknorakit-card {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--white);
+    overflow: hidden;
+    transition: box-shadow 0.25s;
+  }
+  .teknorakit-card:hover { box-shadow: 0 8px 32px rgba(28,22,14,0.08); }
+
+  .tk-body {
+    padding: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .tk-desc p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem; color: var(--ink2); line-height: 1.9;
+    max-width: 580px;
+  }
+  .tk-desc p + p { margin-top: 0.75rem; }
+
+  .tk-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .tk-tags {
+    padding: 1.25rem 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.45rem;
+    background: var(--sand);
+  }
+
+  @media (max-width: 1024px) {
+    .tk-body { flex-direction: column; align-items: flex-start; }
+    .tk-links { align-items: flex-start; }
+  }
+</style>

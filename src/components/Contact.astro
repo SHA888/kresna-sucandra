@@ -1,0 +1,107 @@
+---
+---
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="c-left">
+      <h2 class="c-hl">Let's build something<br /><em>extraordinary</em>.</h2>
+      <p class="c-sub">Clinical AI collaboration, quantum research, open source, or the intersection of Balinese wisdom and frontier technology — reach out.</p>
+      <a href="mailto:kresnasucandra@unud.ac.id" class="btn-white">
+        kresnasucandra@unud.ac.id
+      </a>
+    </div>
+
+    <div class="c-right">
+      <div class="social-label">Elsewhere</div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/kresna-sucandra/" target="_blank" rel="noopener" class="social-link">
+          <span class="sl-name">LinkedIn</span>
+          <span class="sl-handle">Kresna Sucandra, MD</span>
+        </a>
+        <a href="https://github.com/SHA888" target="_blank" rel="noopener" class="social-link">
+          <span class="sl-name">GitHub</span>
+          <span class="sl-handle">@SHA888</span>
+        </a>
+        <a href="https://x.com/ks_sha888" target="_blank" rel="noopener" class="social-link">
+          <span class="sl-name">Twitter / X</span>
+          <span class="sl-handle">@ks_sha888</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #contact {
+    background: var(--rust);
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: rgba(255,255,255,0.05); pointer-events: none;
+  }
+  #contact::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 340px; height: 340px; border-radius: 50%;
+    background: rgba(255,255,255,0.04); pointer-events: none;
+  }
+
+  .contact-wrap {
+    max-width: 1200px; margin: 0 auto; padding: 6rem 3.5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .c-hl {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.1rem;
+  }
+  .c-hl em { font-style: italic; color: rgba(255,255,255,0.7); }
+  .c-sub { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 2rem; }
+
+  .btn-white {
+    display: inline-block; padding: 0.85rem 2rem;
+    background: #fff; color: var(--rust);
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none; border-radius: 1px; transition: all 0.2s;
+  }
+  .btn-white:hover { background: var(--sand); transform: translateY(-1px); }
+
+  .social-label {
+    font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.25rem;
+  }
+
+  .social-links { display: flex; flex-direction: column; gap: 0; }
+  .social-link {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .social-link:last-child { border-bottom: none; }
+  .social-link:hover { padding-left: 0.5rem; }
+
+  .sl-name {
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500; color: #fff;
+  }
+  .sl-handle {
+    font-size: 0.78rem; color: rgba(255,255,255,0.45);
+    transition: color 0.2s;
+  }
+  .social-link:hover .sl-handle { color: rgba(255,255,255,0.75); }
+
+  @media (max-width: 1024px) {
+    .contact-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.75rem; }
+  }
+</style>

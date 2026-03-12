@@ -1,0 +1,104 @@
+---
+const cols = [
+  {
+    head: 'Systems & Languages',
+    items: [
+      { name: 'Rust',         sub: 'Native / Systems' },
+      { name: 'Python',       sub: 'ML / Research' },
+      { name: 'LLVM',         sub: 'Compiler Backend' },
+      { name: 'WebAssembly',  sub: 'Cross-platform' },
+    ],
+  },
+  {
+    head: 'AI & Quantum',
+    items: [
+      { name: 'PyTorch',  sub: 'Deep Learning' },
+      { name: 'Qiskit',   sub: 'Quantum Computing' },
+      { name: 'R / Stan', sub: 'Bayesian Stats' },
+      { name: 'MIMIC-IV', sub: 'Clinical Data' },
+    ],
+  },
+  {
+    head: 'Data & Infra',
+    items: [
+      { name: 'Apache Arrow',        sub: 'Data Warehouse' },
+      { name: 'DataFusion',          sub: 'Query Engine' },
+      { name: 'FHIR / HL7',          sub: 'Health Informatics' },
+      { name: 'Polkadot / Substrate', sub: 'Web3' },
+    ],
+  },
+  {
+    head: 'Methods',
+    items: [
+      { name: 'Bayesian Inference', sub: 'Stats / ML' },
+      { name: 'Causal Inference',   sub: 'Epidemiology' },
+      { name: 'Federated Learning', sub: 'Privacy-preserving' },
+      { name: 'Systematic Review',  sub: 'PROSPERO / PROBAST' },
+    ],
+  },
+];
+---
+<section id="stack">
+  <div class="sw">
+    <div class="label">Technology</div>
+    <h2 class="display">From bare metal<br />to <em>quantum circuits</em>.</h2>
+    <div class="stack-cols rv">
+      {cols.map((col) => (
+        <div class="stack-col">
+          <div class="stack-col-head">{col.head}</div>
+          {col.items.map((item) => (
+            <div class="stack-item">
+              {item.name}
+              <span class="stack-sub">{item.sub}</span>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #stack { background: var(--sage); border-top: 1px solid var(--border); }
+
+  .stack-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .stack-col { border-right: 1px solid var(--border); }
+  .stack-col:last-child { border-right: none; }
+
+  .stack-col-head {
+    padding: 0.85rem 1.25rem;
+    background: var(--sand2);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3);
+  }
+  .stack-item {
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid rgba(28,22,14,0.06);
+    font-size: 0.82rem; font-weight: 500; color: var(--ink2);
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background 0.18s;
+  }
+  .stack-item:last-child { border-bottom: none; }
+  .stack-item:hover { background: var(--blush); }
+  .stack-sub { font-size: 0.65rem; color: var(--ink4); font-weight: 400; }
+
+  @media (max-width: 1024px) {
+    .stack-cols { grid-template-columns: 1fr 1fr; }
+    .stack-col:nth-child(2) { border-right: none; }
+    .stack-col:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+    .stack-col:nth-child(4) { border-right: none; border-top: 1px solid var(--border); }
+  }
+  @media (max-width: 600px) {
+    .stack-cols { grid-template-columns: 1fr; }
+    .stack-col { border-right: none !important; border-top: 1px solid var(--border); }
+    .stack-col:first-child { border-top: none; }
+  }
+</style>

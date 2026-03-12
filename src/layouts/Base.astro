@@ -1,0 +1,113 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'dr. Kresna Sucandra — Physician · Builder · Researcher',
+  description = 'Anesthesiologist, CTO of CiptaSel, and systems engineer based in Denpasar, Bali.',
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+
+  <nav>
+    <a href="#hero" class="nav-mark">dr. <i>Kresna</i> Sucandra</a>
+    <ul class="nav-links">
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#ventures">TeknoRakit</a></li>
+      <li><a href="#projects">Open Source</a></li>
+
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <slot />
+
+  <footer>
+    <span class="fc">© 2026 dr. Kresna Sucandra, SpAn-TI, Subsp.T.I.(K) · All rights reserved.</span>
+    <span class="ft">From Bali, for the world.</span>
+  </footer>
+
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 3.5rem;
+    height: 60px;
+    background: rgba(253,250,245,0.92);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 500;
+    color: var(--ink2); letter-spacing: 0.04em; text-decoration: none;
+  }
+  .nav-mark i { font-style: italic; color: var(--rust); }
+  .nav-links { list-style: none; display: flex; gap: 2.25rem; }
+  .nav-links a {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink3); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.on { color: var(--rust); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1C160E;
+    padding: 1.4rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .fc { font-size: 0.67rem; color: rgba(255,255,255,0.25); letter-spacing: 0.04em; }
+  .ft {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem; font-style: italic;
+    color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 1024px) {
+    nav { padding: 0 1.75rem; }
+    .nav-links { display: none; }
+    footer { padding: 1.4rem 1.75rem; }
+  }
+  @media (max-width: 600px) {
+    footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
+</style>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(
+    (es) => es.forEach((e) => { if (e.isIntersecting) e.target.classList.add('on'); }),
+    { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.rv').forEach((el) => obs.observe(el));
+
+  // Active nav link
+  const secs = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach((s) => { if (window.scrollY >= (s as HTMLElement).offsetTop - 200) cur = s.id; });
+    navLinks.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === `#${cur}`));
+  }, { passive: true });
+</script>

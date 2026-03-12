@@ -1,0 +1,50 @@
+---
+---
+<section id="about">
+  <div class="sw">
+    <div class="label">About</div>
+    <h2 class="display">Rooted in <em>Bali</em>,<br />building for the world.</h2>
+    <div class="about-layout rv">
+      <div class="about-prose">
+        <p>Most problems worth solving sit at the edge of disciplines — where the clinician hasn't met the engineer, where ancient knowledge hasn't met modern tooling, where a small island hasn't yet been taken seriously as a place that builds things.</p>
+        <p>Whatever your expertise — use it on something that matters. The gaps are real, the tools are here, and the world doesn't need more observers.</p>
+      </div>
+      <div class="about-cards">
+        <div class="acard"><div class="atitle">Edge of disciplines</div><div class="adesc">Where clinician meets engineer, where ancient meets modern.</div></div>
+        <div class="acard"><div class="atitle">Use your expertise</div><div class="adesc">The gaps are real. The tools are here. The world doesn't need more observers.</div></div>
+        <div class="acard"><div class="atitle">Bali builds</div><div class="adesc">A small island taken seriously as a place that makes things that matter.</div></div>
+      </div>
+      <div class="about-prose">
+        <p>If your work touches any of mine, I'd like to hear from you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #about { background: var(--white); border-top: 1px solid var(--border); }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-prose p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.15rem; color: var(--ink2); line-height: 2.05; margin-bottom: 1.4rem;
+  }
+  .about-prose p strong { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--ink); }
+
+  .about-cards { display: flex; flex-direction: row; gap: 0.8rem; }
+  .acard { flex: 1; }
+  .acard {
+    display: flex; gap: 0.9rem; align-items: flex-start;
+    padding: 1rem 1.25rem; background: var(--sand);
+    border: 1px solid var(--border); border-radius: 2px;
+  }
+  .aico  { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .atitle { font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 0.1rem; }
+  .adesc  { font-size: 0.73rem; color: var(--ink3); line-height: 1.5; }
+
+  @media (max-width: 1024px) { .about-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+</style>

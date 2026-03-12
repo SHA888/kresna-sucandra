@@ -1,0 +1,109 @@
+---
+const domains = [
+  {
+    num: '01', icon: '🫁',
+    title: 'Critical Care Medicine',
+    desc: '13 years of ICU practice. Subspecialist consultant in intensive therapy. Head of Critical Care Fellowship at RSUP Ngoerah, Udayana University. Clinical educator and resident mentor.',
+    tags: ['ICU', 'Anesthesiology', 'Sepsis', 'EBM'],
+  },
+  {
+    num: '02', icon: '🧬',
+    title: 'Clinical AI & ML',
+    desc: 'PROSPERO-registered systematic review on biomarker-enhanced ML for sepsis detection in pre-ICU settings (CRD420251164609). PROBAST risk-of-bias analysis completed. Manuscript in final stage. Division Head of Data Science & AI at MEDDSAI.',
+    tags: ['Biomarkers', 'MIMIC-IV', 'Bayesian', 'PROSPERO'],
+  },
+  {
+    num: '03', icon: '⚛️',
+    title: 'Quantum-AI',
+    desc: 'Building the Reciprocal Acceleration Framework (RAF) — a systematic framework for understanding co-evolutionary dynamics between Quantum Computing and Machine Learning. Early-stage, open research.',
+    tags: ['RAF', 'VQE', 'NISQ', 'Qiskit'],
+  },
+  {
+    num: '04', icon: '🦀',
+    title: 'Systems Engineering',
+    desc: 'Low-level Rust developer. Published multiple crates on crates.io. Building swarm intelligence, healthcare language tooling, and data warehouse infrastructure. Former core blockchain engineer in Rust across several projects.',
+    tags: ['Rust', 'LLVM', 'Blockchain', 'FHIR/HL7'],
+  },
+  {
+    num: '05', icon: '🌿',
+    title: 'Interest in Biodiversity & Pharma',
+    desc: 'Deep interest in Indonesian biodiversity, traditional Jamu medicine, and the intersection of fermentation science with modern pharmacology. Exploring how ancestral plant knowledge can inform contemporary health products.',
+    tags: ['Jamu', 'Temulawak', 'Fermentation', 'Ethnobotany'],
+  },
+  {
+    num: '06', icon: '🎓',
+    title: 'Medical Lecturer & Doctoral Student',
+    desc: 'Lecturer at Udayana University — teaching anesthesiology and critical care, mentoring residents, and supervising thesis work. Pursuing doctoral research (S3) to apply machine learning in critical care.',
+    tags: ['S3 Doctoral', 'Udayana', 'Lecturer', 'Research'],
+  },
+];
+---
+<section id="domains">
+  <div class="sw">
+    <div class="label">Expertise</div>
+    <h2 class="display">Six domains.<br /><em>One integrated mind.</em></h2>
+    <div class="domain-layout rv">
+      {domains.map((d) => (
+        <div class="domain-cell">
+          <div class="dc-num">{d.num}</div>
+          <span class="dc-icon">{d.icon}</span>
+          <div class="dc-title">{d.title}</div>
+          <div class="dc-desc">{d.desc}</div>
+          <div class="dc-tags">
+            {d.tags.map((t) => <span class="tag">{t}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #domains { background: var(--white); border-top: 1px solid var(--border); }
+
+  .domain-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .domain-cell {
+    padding: 2rem 1.75rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    transition: background 0.25s;
+  }
+  .domain-cell:nth-child(3n)   { border-right: none; }
+  .domain-cell:nth-child(n+4)  { border-bottom: none; }
+  .domain-cell:hover { background: var(--blush); }
+
+  .dc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; font-style: italic;
+    color: rgba(28,22,14,0.12); line-height: 1; margin-bottom: 0.75rem;
+  }
+  .dc-icon  { font-size: 1.3rem; margin-bottom: 0.65rem; display: block; }
+  .dc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 500;
+    color: var(--ink2); margin-bottom: 0.5rem; line-height: 1.25;
+  }
+  .dc-desc  { font-size: 0.8rem; color: var(--ink3); line-height: 1.75; }
+  .dc-tags  { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+
+  @media (max-width: 1024px) {
+    .domain-layout { grid-template-columns: 1fr 1fr; }
+    .domain-cell:nth-child(3n)  { border-right: 1px solid var(--border); }
+    .domain-cell:nth-child(2n)  { border-right: none; }
+    .domain-cell:nth-child(n+4) { border-bottom: 1px solid var(--border); }
+    .domain-cell:nth-child(n+5) { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    .domain-layout { grid-template-columns: 1fr; }
+    .domain-cell { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+    .domain-cell:last-child { border-bottom: none !important; }
+  }
+</style>
