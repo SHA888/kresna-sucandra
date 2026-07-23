@@ -1,12 +1,87 @@
 ---
+const flagship = [
+  {
+    title: 'Tolvex',
+    url: 'https://github.com/Tolvex/tolvex',
+    desc: "A programming language built specifically for healthcare — Python/R-simple syntax, LLVM-compiled for near-C++ speed, with FHIR, HL7, DICOM, and genomic formats (FASTQ, VCF) as native types instead of bolted-on libraries. Compliance is a language feature too: built-in regulate blocks handle PHI tracking and HIPAA/GDPR automation, and it targets WebAssembly and RISC-V for wearables and edge devices. Previously called Medi, renamed at v0.1.6.",
+    tags: ['LLVM-compiled', 'FHIR · HL7 · DICOM', 'WebAssembly · RISC-V', 'MIT'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Tolvex/tolvex' },
+      { label: 'Website', href: 'https://tolvex.dev' },
+      { label: 'crates.io', href: 'https://crates.io/crates/tolvex' },
+    ],
+  },
+  {
+    title: 'KadeDB',
+    url: 'https://github.com/Tolvex/KadeDB',
+    desc: "The database Tolvex needed and didn't have — one engine spanning relational, document, time-series, and graph storage, for healthcare data that's usually scattered across four different systems. A C++ core with GPU acceleration, a Rust services layer for the async/auth/API surface, and a C-based Lite client for wearables and edge nodes.",
+    tags: ['Multi-model', 'C++ / Rust', 'GPU-accelerated', 'MIT'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Tolvex/KadeDB' },
+    ],
+  },
+];
+
 const projects = [
   {
-    cat: 'Framework · Quantum-AI',
+    cat: 'Cluster · Healthcare Interop',
+    icon: '🩺',
+    title: 'clinical-rs',
+    org: 'SHA888',
+    url: 'https://github.com/SHA888/clinical-rs',
+    desc: "FHIR R4 and HL7 v2/MLLP parsers (down to field mappings for Mindray patient monitors), SATUSEHAT types for Indonesia's national health platform, a MIMIC-IV ETL pipeline, clinical prediction task windowing, and a symbolic engine for clinical decision lattices (clinlat).",
+    links: [
+      { label: 'GitHub', href: 'https://github.com/SHA888/clinical-rs' },
+      { label: 'crates.io', href: 'https://crates.io/crates/medcodes' },
+    ],
+    crate: true,
+  },
+  {
+    cat: 'Cluster · AI Agents',
+    icon: '🤖',
+    title: 'EVOSEAL',
+    org: 'SHA888',
+    url: 'https://github.com/SHA888/EVOSEAL',
+    desc: "An evolutionary self-improving AI agent — my most-starred repo, and still a research project rather than a product. Alongside it: agi4 (an attestation/verdict framework across five crates), cargo-skill (a Cargo subcommand for deploying AI agent skills), and teri, a swarm-intelligence engine. I'm also a core member of FSO (Fluminis Scientiae Oraculum) — a private founding-stage effort building governed memory infrastructure for AI agents, public at flusci.org.",
+    links: [
+      { label: 'GitHub', href: 'https://github.com/SHA888/EVOSEAL' },
+      { label: 'crates.io', href: 'https://crates.io/crates/agi4' },
+    ],
+    crate: false,
+  },
+  {
+    cat: 'Cluster · Balinese Computing',
+    icon: '📅',
+    title: 'balinese-calendar',
+    org: 'SHA888',
+    url: 'https://github.com/SHA888/balinese-calendar',
+    desc: "First native Rust implementation of the Balinese Saka Calendar — computes Pawukon, Wewaran, Sasih, and Rahinan from any Gregorian date. Part of a small workspace alongside lontar, a document-generation library named after the palm-leaf manuscripts it's meant to someday help preserve.",
+    links: [
+      { label: 'GitHub', href: 'https://github.com/SHA888/balinese-calendar' },
+      { label: 'crates.io', href: 'https://crates.io/crates/balinese-calendar' },
+    ],
+    crate: true,
+  },
+  {
+    cat: 'Cluster · Web Tooling',
+    icon: '🕸️',
+    title: 'kawat',
+    org: 'SHA888',
+    url: 'https://github.com/SHA888/kawat',
+    desc: "A web content extraction library inspired by Python's trafilatura — pulls main text, metadata, and comments out of raw HTML. Grew into eleven small crates (HTML cleaning, XPath, readability fallback, deduplication, multi-format output) that each do one thing.",
+    links: [
+      { label: 'GitHub', href: 'https://github.com/SHA888/kawat' },
+      { label: 'crates.io', href: 'https://crates.io/crates/kawat' },
+    ],
+    crate: true,
+  },
+  {
+    cat: 'Cluster · Research Tools',
     icon: '⚛️',
     title: 'RAF',
     org: 'SHA888',
     url: 'https://github.com/SHA888/RAF',
-    desc: 'Reciprocal Acceleration Framework — a systematic framework for understanding co-evolutionary dynamics between Quantum Computing and Machine Learning. Open research.',
+    desc: 'Reciprocal Acceleration Framework — a systematic account of how quantum computing and machine learning pull each other forward. Neighboring experiments: composable-future (a formal algebra of possible futures), ferriprove (a Lean 4–compatible theorem prover in Rust, pre-release), torchforge (ML benchmarking), and mantis-ta (a technical-analysis engine, mostly for fun).',
     links: [
       { label: 'GitHub', href: 'https://github.com/SHA888/RAF' },
     ],
@@ -17,87 +92,10 @@ const projects = [
     icon: '◆',
     title: 'idep',
     org: 'idep-editor',
-    url: 'https://idep.dev',
+    url: 'https://github.com/idep-editor/idep',
     desc: 'Native Rust IDE built for thought-level control. Local-first, any AI backend, no cloud dependency. Apache 2.0.',
     links: [
       { label: 'GitHub', href: 'https://github.com/idep-editor/idep' },
-      { label: 'Website', href: 'https://idep.dev' },
-      { label: 'Docs', href: 'https://docs.idep.dev' },
-    ],
-    crate: false,
-  },
-  {
-    cat: 'Rust · Documents',
-    icon: '📄',
-    title: 'lontar',
-    org: 'lontar-rs',
-    url: 'https://github.com/lontar-rs/lontar',
-    desc: 'Comprehensive document generation library for Rust. Named after the lontar palm leaf — traditional Balinese manuscript medium.',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/lontar-rs/lontar' },
-      { label: 'crates.io', href: 'https://crates.io/crates/lontar' },
-    ],
-    crate: true,
-  },
-  {
-    cat: 'Rust · Culture',
-    icon: '📅',
-    title: 'balinese-calendar',
-    org: 'SHA888',
-    url: 'https://github.com/SHA888/balinese-calendar',
-    desc: 'First native Rust implementation of the Balinese Saka Calendar system. Foundation of the Dedauh SaaS platform.',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/SHA888/balinese-calendar' },
-      { label: 'crates.io', href: 'https://crates.io/crates/balinese-calendar' },
-    ],
-    crate: true,
-  },
-  {
-    cat: 'Rust · IoT Protocol',
-    icon: '🔌',
-    title: 'clonic',
-    org: 'Teknorakit',
-    url: 'https://github.com/Teknorakit/clonic',
-    desc: 'Wire protocol types and codec for the Zone Coordination Protocol (ZCP). Part of the TeknoRakit physical-AI ecosystem.',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/Teknorakit/clonic' },
-      { label: 'crates.io', href: 'https://crates.io/crates/clonic' },
-    ],
-    crate: true,
-  },
-  {
-    cat: 'Rust · AI',
-    icon: '🐟',
-    title: 'teri',
-    org: 'SHA888',
-    url: 'https://github.com/SHA888/teri',
-    desc: 'Swarm intelligence engine in Rust. Named after ikan teri (anchovy) — distributed, emergent, low-overhead.',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/SHA888/teri' },
-    ],
-    crate: false,
-  },
-  {
-    cat: 'Language · Healthcare',
-    icon: '💊',
-    title: 'tolvex',
-    org: 'Tolvex',
-    url: 'https://github.com/Tolvex/tolvex',
-    desc: 'Healthcare-native programming language with FHIR/HL7 support and LLVM backend. Registered trademark in Indonesia.',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/Tolvex/tolvex' },
-    ],
-    crate: false,
-  },
-  {
-    cat: 'Database · Healthcare',
-    icon: '🗄️',
-    title: 'KadeDB',
-    org: 'Tolvex',
-    url: 'https://github.com/Tolvex/KadeDB',
-    desc: 'Purpose-built database engine for healthcare data, designed to work natively within the Tolvex ecosystem.',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/Tolvex/KadeDB' },
     ],
     crate: false,
   },
@@ -106,7 +104,32 @@ const projects = [
 <section id="projects">
   <div class="sw">
     <div class="label">Open Source</div>
-    <h2 class="display">Code I've <em>shipped</em>.</h2>
+    <h2 class="display display-sm">Mostly unfinished.<br /><em>All in the open.</em></h2>
+
+    <div class="flagship rv">
+      <div class="flagship-label">Flagship</div>
+      <div class="flagship-grid">
+        {flagship.map((f) => (
+          <div class="flagship-item">
+            <div class="fi-top">
+              <a href={f.url} target="_blank" rel="noopener" class="fi-title">{f.title}</a>
+              <span class="vbadge bp">Pre-alpha</span>
+            </div>
+            <p class="fi-desc">{f.desc}</p>
+            <div class="fi-tags">
+              {f.tags.map((t) => <span class="tag">{t}</span>)}
+            </div>
+            <div class="fi-links">
+              {f.links.map((l) => (
+                <a href={l.href} target="_blank" rel="noopener" class="tag">{l.label}</a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p class="projects-intro">Tolvex and KadeDB above are the two I'm most invested in. Everything else is more exploratory — 110 repositories and 54 published crates in total, grouped here by theme.</p>
     <div class="projects-grid rv">
       {projects.map((p) => (
         <div class="proj-card">
@@ -129,11 +152,59 @@ const projects = [
         </div>
       ))}
     </div>
+    <div class="projects-more rv">
+      This covers six threads out of a bigger tangle.
+      <a href="https://github.com/SHA888" target="_blank" rel="noopener" class="tag">All repos on GitHub →</a>
+      <a href="https://crates.io/users/SHA888" target="_blank" rel="noopener" class="tag">All crates on crates.io →</a>
+    </div>
   </div>
 </section>
 
 <style>
-  #projects { background: var(--blush); border-top: 1px solid var(--border); }
+  #projects { background: var(--panel); border-top: 1px solid var(--line); }
+
+  .flagship {
+    border: 1px solid var(--trace);
+    background: var(--void);
+    margin-bottom: 1.75rem;
+  }
+  .flagship-label {
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-micro); letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--trace); padding: 0.9rem 1.75rem 0;
+  }
+  .flagship-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .flagship-item {
+    padding: 1.5rem 1.75rem 1.75rem;
+    border-right: 1px solid var(--line);
+  }
+  .flagship-item:last-child { border-right: none; }
+  .fi-top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.75rem; margin-bottom: 0.75rem;
+  }
+  .fi-title {
+    font-family: 'Fragment Mono', monospace;
+    font-size: 1.25rem; color: var(--paper); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .fi-title:hover { color: var(--trace); }
+  .fi-desc {
+    font-family: 'Literata', serif;
+    font-size: var(--fs-lead); color: var(--dim); line-height: 1.9;
+    margin-bottom: 1.1rem;
+  }
+  .fi-tags, .fi-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .fi-tags { margin-bottom: 0.9rem; }
+
+  .projects-intro {
+    font-family: 'Literata', serif;
+    font-size: var(--fs-body); font-style: italic; color: var(--dim);
+    max-width: 620px; margin-bottom: 2.5rem;
+  }
 
   .projects-grid {
     display: grid;
@@ -141,52 +212,68 @@ const projects = [
     gap: 1.25rem;
   }
   .proj-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 2px;
+    background: var(--void);
+    border: 1px solid var(--line);
+    border-radius: 0;
     overflow: hidden;
     transition: all 0.28s;
   }
-  .proj-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(28,22,14,0.1); }
+  .proj-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(75,190,138,0.08); }
 
   .proj-top {
     padding: 1.5rem 1.5rem 1rem;
     display: flex; justify-content: space-between; align-items: flex-start;
-    border-bottom: 1px solid rgba(28,22,14,0.06);
+    border-bottom: 1px solid var(--line);
   }
   .proj-cat {
-    font-size: 0.6rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 0.18rem 0.55rem; border-radius: 100px;
-    background: var(--sand); color: var(--rust);
-    border: 1px solid rgba(155,61,26,0.2);
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-micro); font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.2rem 0.6rem; border-radius: 0;
+    background: var(--panel2); color: var(--pulse);
+    border: 1px solid rgba(74,160,196,0.2);
   }
-  .proj-icon { font-size: 1.15rem; }
+  .proj-icon { font-size: 1.1rem; filter: grayscale(1) contrast(1.15) brightness(1.3); opacity: 0.75; }
 
   .proj-body { padding: 1rem 1.5rem 1.5rem; }
   .proj-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem; font-weight: 500; color: var(--ink);
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-title); font-weight: 400; color: var(--paper);
     text-decoration: none; display: flex; align-items: baseline;
     flex-wrap: wrap; gap: 0.3rem;
-    margin-bottom: 0.4rem; transition: color 0.2s; line-height: 1.3;
+    margin-bottom: 0.5rem; transition: color 0.2s; line-height: 1.3;
   }
-  .proj-title:hover { color: var(--rust); }
-  .proj-org { font-weight: 300; color: var(--ink4); font-size: 0.9em; }
+  .proj-title:hover { color: var(--trace); }
+  .proj-org { font-weight: 400; color: var(--dim2); font-size: 0.85em; }
 
   .crate-badge {
-    font-size: 0.55rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.12rem 0.45rem; border-radius: 100px;
-    background: rgba(58,107,74,0.1);
-    border: 1px solid var(--sage-m);
-    color: var(--sage-d);
+    font-family: 'Fragment Mono', monospace;
+    font-size: 0.58rem; font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.14rem 0.5rem; border-radius: 0;
+    background: rgba(74,160,196,0.1);
+    border: 1px solid var(--pulse);
+    color: var(--pulse);
     align-self: center;
   }
 
-  .proj-desc  { font-size: 0.79rem; color: var(--ink3); line-height: 1.75; margin-bottom: 1rem; }
+  .proj-desc  { font-size: 1rem; color: var(--dim); line-height: 1.85; margin-bottom: 1rem; font-family: 'Literata', serif; }
   .proj-links { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 
-  @media (max-width: 1024px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 600px)  { .projects-grid { grid-template-columns: 1fr; } }
+  .projects-more {
+    margin-top: 1.75rem;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;
+    font-family: 'Literata', serif; font-style: italic;
+    font-size: var(--fs-body); color: var(--dim2);
+  }
+
+  @media (max-width: 1024px) {
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .flagship-grid { grid-template-columns: 1fr; }
+    .flagship-item { border-right: none; border-bottom: 1px solid var(--line); }
+    .flagship-item:last-child { border-bottom: none; }
+  }
 </style>

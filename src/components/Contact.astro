@@ -1,11 +1,20 @@
 ---
 ---
 <section id="contact">
+  <div class="contact-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice">
+      <path d="M0 250 H420 L440 130 L462 370 L484 250 H620" fill="none" stroke="rgba(75,190,138,0.24)" stroke-width="1.3" />
+      <path d="M600 250 Q 700 180, 800 250 T 1000 250 T 1200 250" fill="none" stroke="rgba(74,160,196,0.22)" stroke-width="1.3" />
+      <path d="M580 250 Q 700 330, 800 250 T 1000 250 T 1200 250" fill="none" stroke="rgba(201,98,118,0.2)" stroke-width="1.3" />
+      <circle cx="600" cy="250" r="4" fill="rgba(237,231,218,0.6)" />
+    </svg>
+  </div>
   <div class="contact-wrap">
     <div class="c-left">
+      <div class="label">Contact</div>
       <h2 class="c-hl">Let's work on<br /><em>something real</em>.</h2>
       <p class="c-sub">Clinical AI collaboration, quantum research, open source, or the intersection of Balinese wisdom and frontier technology — reach out.</p>
-      <a href="mailto:kresnasucandra@gmail.com" class="btn-white">Contact</a>
+      <a href="mailto:kresnasucandra@gmail.com" class="btn-primary">Contact</a>
     </div>
 
     <div class="c-right">
@@ -30,22 +39,13 @@
 
 <style>
   #contact {
-    background: var(--rust);
+    background: var(--panel);
+    border-top: 1px solid var(--line);
     position: relative;
     overflow: hidden;
   }
-  #contact::before {
-    content: '';
-    position: absolute; top: -120px; right: -120px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: rgba(255,255,255,0.05); pointer-events: none;
-  }
-  #contact::after {
-    content: '';
-    position: absolute; bottom: -80px; left: -80px;
-    width: 340px; height: 340px; border-radius: 50%;
-    background: rgba(255,255,255,0.04); pointer-events: none;
-  }
+  .contact-bg { position: absolute; inset: 0; pointer-events: none; opacity: 0.5; }
+  .contact-bg svg { width: 100%; height: 100%; }
 
   .contact-wrap {
     max-width: 1200px; margin: 0 auto; padding: 6rem 3.5rem;
@@ -54,26 +54,18 @@
   }
 
   .c-hl {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.4rem, 4vw, 3.5rem);
-    font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.1rem;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-h1);
+    font-weight: 400; color: var(--paper); line-height: 1.25; margin-bottom: 1.1rem;
   }
-  .c-hl em { font-style: italic; color: rgba(255,255,255,0.7); }
-  .c-sub { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 2rem; }
-
-  .btn-white {
-    display: inline-block; padding: 0.85rem 2rem;
-    background: #fff; color: var(--rust);
-    font-size: 0.8rem; font-weight: 700;
-    letter-spacing: 0.06em;
-    text-decoration: none; border-radius: 1px; transition: all 0.2s;
-  }
-  .btn-white:hover { background: var(--sand); transform: translateY(-1px); }
+  .c-hl em { font-style: italic; color: var(--alert); }
+  .c-sub { font-family: 'Literata', serif; font-size: var(--fs-lead); color: var(--dim); line-height: 1.85; margin-bottom: 2rem; }
 
   .social-label {
-    font-size: 0.62rem; font-weight: 700;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-micro); font-weight: 400;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: var(--dim2);
     margin-bottom: 1.25rem;
   }
 
@@ -81,7 +73,7 @@
   .social-link {
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.1rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--line);
     text-decoration: none;
     transition: all 0.2s;
   }
@@ -89,15 +81,17 @@
   .social-link:hover { padding-left: 0.5rem; }
 
   .sl-name {
-    font-size: 1rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500; color: #fff;
+    font-size: var(--fs-title);
+    font-family: 'Fragment Mono', monospace;
+    font-weight: 400; color: var(--paper);
   }
   .sl-handle {
-    font-size: 0.78rem; color: rgba(255,255,255,0.45);
+    font-family: 'Literata', serif;
+    font-size: var(--fs-ui); font-style: italic; color: var(--dim2);
     transition: color 0.2s;
   }
-  .social-link:hover .sl-handle { color: rgba(255,255,255,0.75); }
+  .social-link:hover .sl-name { color: var(--trace); }
+  .social-link:hover .sl-handle { color: var(--dim); }
 
   @media (max-width: 1024px) {
     .contact-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.75rem; }

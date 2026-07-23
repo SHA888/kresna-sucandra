@@ -16,11 +16,12 @@
         <div class="acard"><div class="atitle">Bali builds</div><div class="adesc">A small island taken seriously as a place that makes things that matter.</div></div>
       </div>
     </div>
+    <div class="poleng" title="Poleng — the black-and-white checkered cloth of Balinese temples, worn to mark the balance of opposing forces (rwa bhineda)."></div>
   </div>
 </section>
 
 <style>
-  #about { background: var(--white); border-top: 1px solid var(--border); }
+  #about { background: var(--panel); border-top: 1px solid var(--line); }
 
   .about-layout {
     display: grid;
@@ -28,21 +29,25 @@
     gap: 2.5rem;
   }
   .about-prose p {
-    font-family: 'Crimson Pro', serif;
-    font-size: 1.15rem; color: var(--ink2); line-height: 2.05; margin-bottom: 1.4rem;
+    font-family: 'Literata', serif;
+    font-size: var(--fs-lead); color: var(--dim); line-height: 2; margin-bottom: 1.4rem;
   }
-  .about-prose p strong { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--ink); }
+  .about-prose p strong { font-family: 'Fragment Mono', monospace; font-weight: 400; color: var(--paper); }
 
   .about-cards { display: flex; flex-direction: row; gap: 0.8rem; }
   .acard { flex: 1; }
   .acard {
     display: flex; gap: 0.9rem; align-items: flex-start;
-    padding: 1rem 1.25rem; background: var(--sand);
-    border: 1px solid var(--border); border-radius: 2px;
+    padding: 1rem 1.25rem; background: var(--void);
+    border: 1px solid var(--line); border-radius: 0;
   }
-  .aico  { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
-  .atitle { font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 0.1rem; }
-  .adesc  { font-size: 0.73rem; color: var(--ink3); line-height: 1.5; }
+  .atitle { font-family: 'Fragment Mono', monospace; font-size: var(--fs-title); font-weight: 400; color: var(--paper); margin-bottom: 0.35rem; }
+  .adesc  { font-size: var(--fs-body); color: var(--dim); line-height: 1.65; font-family: 'Literata', serif; }
 
-  @media (max-width: 1024px) { .about-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .poleng { margin-top: 3.5rem; }
+
+  @media (max-width: 1024px) {
+    .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-cards { flex-direction: column; }
+  }
 </style>

@@ -1,39 +1,39 @@
 ---
 const domains = [
   {
-    num: '01', icon: '🫁',
+    icon: '🫁',
     title: 'Critical Care Medicine',
-    desc: '13 years of ICU practice. Subspecialist consultant in intensive therapy. Head of Critical Care Fellowship at RSUP Ngoerah, Udayana University. Clinical educator and resident mentor.',
+    desc: "In intensive care since 2012 — as an anesthesiologist and intensivist at RSUP Ngoerah, where I also head the Intensive Care Fellowship Program; as Head of Critical Care at Siloam Hospital Denpasar; and, more recently, at Bali International Hospital. A lot of that time goes to teaching — residents learn faster when someone's actually in the room with them.",
     tags: ['ICU', 'Anesthesiology', 'Sepsis', 'EBM'],
   },
   {
-    num: '02', icon: '🧬',
+    icon: '🧬',
     title: 'Clinical AI & ML',
-    desc: 'PROSPERO-registered systematic review on biomarker-enhanced ML for sepsis detection in pre-ICU settings (CRD420251164609). PROBAST risk-of-bias analysis completed. Manuscript in final stage. Division Head of Data Science & AI at MEDDSAI.',
+    desc: "Sepsis is hardest to catch in the hours before anyone's watching closely enough. I'm leading a PROSPERO-registered systematic review (CRD420251164609) on whether biomarker-enhanced machine learning can catch it earlier in pre-ICU settings — PROBAST bias analysis is done, manuscript in its final stage. I also head Data Science & AI for the Anesthesiology and Intensive Care Department at Udayana University.",
     tags: ['Biomarkers', 'MIMIC-IV', 'Bayesian', 'PROSPERO'],
   },
   {
-    num: '03', icon: '⚛️',
+    icon: '⚛️',
     title: 'Quantum-AI',
-    desc: 'Building the Reciprocal Acceleration Framework (RAF) — a systematic framework for understanding co-evolutionary dynamics between Quantum Computing and Machine Learning. Early-stage, open research.',
+    desc: "A side obsession that turned into real research: the Reciprocal Acceleration Framework (RAF), my attempt at a systematic account of how quantum computing and machine learning are pulling each other forward. Still early-stage, still open — one of the more fun problems I've found.",
     tags: ['RAF', 'VQE', 'NISQ', 'Qiskit'],
   },
   {
-    num: '04', icon: '🦀',
+    icon: '🦀',
     title: 'Systems Engineering',
-    desc: 'Low-level Rust developer. Published multiple crates on crates.io. Building swarm intelligence, healthcare language tooling, and data warehouse infrastructure. Former core blockchain engineer in Rust across several projects.',
+    desc: 'Most of what I build is in Rust, close to the metal. Several crates live on crates.io now — swarm intelligence, healthcare language tooling, data warehouse infrastructure. Before that, I was a blockchain engineer in Rust — co-founder and Substrate runtime developer at InvArch, co-founder at PillarHub Network, and a blockchain developer at Gemini Teknologi Indonesia.',
     tags: ['Rust', 'LLVM', 'Blockchain', 'FHIR/HL7'],
   },
   {
-    num: '05', icon: '🌿',
+    icon: '🌿',
     title: 'Interest in Biodiversity & Pharma',
-    desc: 'Deep interest in Indonesian biodiversity, traditional Jamu medicine, and the intersection of fermentation science with modern pharmacology. Exploring how ancestral plant knowledge can inform contemporary health products.',
+    desc: "An ongoing interest, not yet a project: Indonesia's biodiversity, traditional Jamu medicine, and what fermentation science and modern pharmacology can learn from each other. I think a lot about what ancestral plant knowledge still has to teach contemporary medicine.",
     tags: ['Jamu', 'Temulawak', 'Fermentation', 'Ethnobotany'],
   },
   {
-    num: '06', icon: '🎓',
+    icon: '🎓',
     title: 'Medical Lecturer & Doctoral Student',
-    desc: 'Lecturer at Udayana University — teaching anesthesiology and critical care, mentoring residents, and supervising thesis work. Pursuing doctoral research (S3) to apply machine learning in critical care.',
+    desc: "I teach anesthesiology and critical care at Udayana University, mentor residents, and supervise thesis work. Right now I'm also on the other side of the desk — a doctoral (S3) student, researching how machine learning applies to critical care.",
     tags: ['S3 Doctoral', 'Udayana', 'Lecturer', 'Research'],
   },
 ];
@@ -41,12 +41,13 @@ const domains = [
 <section id="domains">
   <div class="sw">
     <div class="label">Expertise</div>
-    <h2 class="display">Six domains.<br /><em>One integrated mind.</em></h2>
+    <h2 class="display">Six disciplines.<br /><em>One continuous thread.</em></h2>
     <div class="domain-layout rv">
       {domains.map((d) => (
         <div class="domain-cell">
-          <div class="dc-num">{d.num}</div>
-          <span class="dc-icon">{d.icon}</span>
+          <div class="dc-top">
+            <span class="dc-icon">{d.icon}</span>
+          </div>
           <div class="dc-title">{d.title}</div>
           <div class="dc-desc">{d.desc}</div>
           <div class="dc-tags">
@@ -59,51 +60,47 @@ const domains = [
 </section>
 
 <style>
-  #domains { background: var(--white); border-top: 1px solid var(--border); }
+  #domains { background: var(--panel); border-top: 1px solid var(--line); }
 
   .domain-layout {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 2px;
+    border: 1px solid var(--line);
+    border-radius: 0;
     overflow: hidden;
   }
   .domain-cell {
     padding: 2rem 1.75rem;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--white);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--void);
     transition: background 0.25s;
   }
   .domain-cell:nth-child(3n)   { border-right: none; }
   .domain-cell:nth-child(n+4)  { border-bottom: none; }
-  .domain-cell:hover { background: var(--blush); }
+  .domain-cell:hover { background: var(--panel2); }
 
-  .dc-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem; font-weight: 300; font-style: italic;
-    color: rgba(28,22,14,0.12); line-height: 1; margin-bottom: 0.75rem;
-  }
-  .dc-icon  { font-size: 1.3rem; margin-bottom: 0.65rem; display: block; }
+  .dc-top { margin-bottom: 1rem; }
+  .dc-icon  { font-size: 1.2rem; filter: grayscale(1) contrast(1.15) brightness(1.3); opacity: 0.75; }
   .dc-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem; font-weight: 500;
-    color: var(--ink2); margin-bottom: 0.5rem; line-height: 1.25;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-title); font-weight: 400;
+    color: var(--paper); margin-bottom: 0.6rem; line-height: 1.3;
   }
-  .dc-desc  { font-size: 0.8rem; color: var(--ink3); line-height: 1.75; }
-  .dc-tags  { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+  .dc-desc  { font-size: var(--fs-body); color: var(--dim); line-height: 1.8; font-family: 'Literata', serif; }
+  .dc-tags  { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1.1rem; }
 
   @media (max-width: 1024px) {
     .domain-layout { grid-template-columns: 1fr 1fr; }
-    .domain-cell:nth-child(3n)  { border-right: 1px solid var(--border); }
+    .domain-cell:nth-child(3n)  { border-right: 1px solid var(--line); }
     .domain-cell:nth-child(2n)  { border-right: none; }
-    .domain-cell:nth-child(n+4) { border-bottom: 1px solid var(--border); }
+    .domain-cell:nth-child(n+4) { border-bottom: 1px solid var(--line); }
     .domain-cell:nth-child(n+5) { border-bottom: none; }
   }
   @media (max-width: 600px) {
     .domain-layout { grid-template-columns: 1fr; }
-    .domain-cell { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+    .domain-cell { border-right: none !important; border-bottom: 1px solid var(--line) !important; }
     .domain-cell:last-child { border-bottom: none !important; }
   }
 </style>

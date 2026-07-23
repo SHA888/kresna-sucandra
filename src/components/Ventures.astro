@@ -1,60 +1,95 @@
 ---
+const others = [
+  {
+    title: 'Pullstar Teknologi Indonesia',
+    role: 'Founding Partner · since 2022',
+    desc: 'An IT services company I co-founded — outside healthcare, closer to straightforward software delivery for clients who just need things built well.',
+    badge: 'ba', badgeLabel: 'Active',
+  },
+  {
+    title: 'UbudCare',
+    role: 'Founding Partner · since 2014',
+    desc: "A group of medical clinics in Bali — my longest-running venture. Before the Rust, before the quantum-AI, this is where I first learned that building healthcare infrastructure and practicing medicine aren't separate jobs.",
+    badge: 'ba', badgeLabel: 'Active',
+  },
+  {
+    title: 'Cyborg Network',
+    role: 'Advisor · previously Founder & CTO',
+    desc: 'An edge-AI and blockchain project. I founded and ran it as CTO before stepping back into an advisory role in 2024 — still involved, just not in the weeds day-to-day.',
+    badge: 'bp', badgeLabel: 'Advisor',
+  },
+];
 ---
 <section id="ventures">
   <div class="sw">
-    <div class="label">Venture</div>
-    <h2 class="display"><em>TeknoRakit</em></h2>
-    <div class="teknorakit-card rv">
-      <div class="tk-body">
-        <div class="tk-desc">
-          <p>IoT and Physical AI education platform based in Indonesia. The RAKIT framework makes embedded systems and hardware tinkering accessible — bridging the gap between digital natives and physical computing.</p>
-          <p>Building the next generation of Indonesian hardware engineers, one board at a time.</p>
+    <div class="label">Ventures</div>
+    <h2 class="display display-sm">What I've built<br /><em>outside the ICU.</em></h2>
+
+    <div class="venture-feature rv">
+      <div class="vf-body">
+        <div class="vf-desc">
+          <p>Junaidi.AI is an AI-education ecosystem for Indonesian healthcare workers, and I'm co-founder and CTO. Junaidi Academy is the flagship product — courses and tools across four pillars: MedResearch for literature review and scientific writing, MedAssistant (JUNA) as a free AI clinical assistant, MedBusiness (JUMEDIC) piloting at four hospitals, and MedFinance for the money side of a medical career nobody teaches you.</p>
+          <p>Founded in 2025. Past 1,000 trainees and a 450-person community already, built on the same gap I keep running into — clinicians excellent at medicine and undertrained in AI, business, and everything else the job now demands.</p>
         </div>
-        <div class="tk-links">
-          <a href="https://www.teknorakit.com/" target="_blank" rel="noopener" class="btn-rust">Visit TeknoRakit →</a>
+        <div class="vf-links">
+          <a href="https://junaidi-ai.com/" target="_blank" rel="noopener" class="btn-primary">Visit Junaidi.AI →</a>
           <span class="vbadge ba">Active</span>
         </div>
       </div>
-      <div class="tk-tags">
-        <span class="tag">IoT</span>
-        <span class="tag">Physical AI</span>
-        <span class="tag">Embedded Systems</span>
-        <span class="tag">Education</span>
+      <div class="vf-tags">
+        <span class="tag">AI</span>
+        <span class="tag">Healthcare Education</span>
+        <span class="tag">MedResearch</span>
+        <span class="tag">MedAssistant</span>
+        <span class="tag">MedBusiness</span>
+        <span class="tag">MedFinance</span>
         <span class="tag">Indonesia</span>
-        <span class="tag">RAKIT Framework</span>
       </div>
+    </div>
+
+    <div class="others-grid rv">
+      {others.map((v) => (
+        <div class="other-card">
+          <div class="other-top">
+            <div class="other-title">{v.title}</div>
+            <span class={`vbadge ${v.badge}`}>{v.badgeLabel}</span>
+          </div>
+          <div class="other-role">{v.role}</div>
+          <p class="other-desc">{v.desc}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  #ventures { background: var(--sand); border-top: 1px solid var(--border); }
+  #ventures { background: var(--void); border-top: 1px solid var(--line); }
 
-  .teknorakit-card {
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    background: var(--white);
+  .venture-feature {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--panel);
     overflow: hidden;
     transition: box-shadow 0.25s;
   }
-  .teknorakit-card:hover { box-shadow: 0 8px 32px rgba(28,22,14,0.08); }
+  .venture-feature:hover { box-shadow: 0 8px 32px rgba(75,190,138,0.06); }
 
-  .tk-body {
+  .vf-body {
     padding: 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: 3rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
   }
-  .tk-desc p {
-    font-family: 'Crimson Pro', serif;
-    font-size: 1.05rem; color: var(--ink2); line-height: 1.9;
+  .vf-desc p {
+    font-family: 'Literata', serif;
+    font-size: var(--fs-lead); color: var(--dim); line-height: 1.9;
     max-width: 580px;
   }
-  .tk-desc p + p { margin-top: 0.75rem; }
+  .vf-desc p + p { margin-top: 0.75rem; }
 
-  .tk-links {
+  .vf-links {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -62,14 +97,47 @@
     flex-shrink: 0;
   }
 
-  .tk-tags {
+  .vf-tags {
     padding: 1.25rem 2.5rem;
     display: flex; flex-wrap: wrap; gap: 0.45rem;
-    background: var(--sand);
+    background: var(--panel2);
+  }
+
+  .others-grid {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .other-card {
+    padding: 1.75rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+  }
+  .other-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 0.75rem; margin-bottom: 0.5rem;
+  }
+  .other-title {
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-title); color: var(--paper); line-height: 1.3;
+  }
+  .other-role {
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-micro); letter-spacing: 0.05em;
+    color: var(--dim2); margin-bottom: 0.9rem;
+  }
+  .other-desc {
+    font-family: 'Literata', serif;
+    font-size: var(--fs-body); color: var(--dim); line-height: 1.8;
   }
 
   @media (max-width: 1024px) {
-    .tk-body { flex-direction: column; align-items: flex-start; }
-    .tk-links { align-items: flex-start; }
+    .vf-body { flex-direction: column; align-items: flex-start; }
+    .vf-links { align-items: flex-start; }
+    .others-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .others-grid { grid-template-columns: 1fr; }
   }
 </style>

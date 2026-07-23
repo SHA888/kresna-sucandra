@@ -6,8 +6,10 @@ export interface Props {
 
 const {
   title = 'dr. Kresna Sucandra — Physician · Builder · Researcher',
-  description = 'Anesthesiologist, CTO of CiptaSel, and systems engineer based in Denpasar, Bali.',
+  description = 'Anesthesiologist, intensivist, and systems engineer based in Denpasar, Bali.',
 } = Astro.props;
+
+const TRACE_PATH = 'M0 16 H54 L62 3 L70 29 L78 16 H150 L158 8 L166 24 L174 16 H250 L256 10 L262 22 L268 16 H400';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -16,28 +18,32 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <title>{title}</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}favicon.svg`} />
 </head>
 <body>
 
-  <nav>
-    <a href="#hero" class="nav-mark">dr. <i>Kresna</i> Sucandra</a>
-    <ul class="nav-links">
-      <li><a href="#domains">Domains</a></li>
-      <li><a href="#ventures">TeknoRakit</a></li>
-      <li><a href="#projects">Open Source</a></li>
+<nav>
+  <a href="#hero" class="nav-mark">dr. <i>Kresna</i> Sucandra</a>
+  <ul class="nav-links">
+    <li><a href="#domains">Domains</a></li>
+    <li><a href="#ventures">Ventures</a></li>
+    <li><a href="#projects">Open Source</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<div class="telemetry" aria-hidden="true">
+  <svg class="telemetry-track" viewBox="0 0 400 32" preserveAspectRatio="none"><path d={TRACE_PATH} /></svg>
+  <svg class="telemetry-track" viewBox="0 0 400 32" preserveAspectRatio="none"><path d={TRACE_PATH} /></svg>
+</div>
 
-  <slot />
+<slot />
 
-  <footer>
-    <span class="fc">© 2026 dr. Kresna Sucandra, SpAn-TI, Subsp.T.I.(K) · All rights reserved.</span>
-    <span class="ft">From Bali, for the world.</span>
-  </footer>
+<footer>
+  <span class="fc">© 2026 dr. Kresna Sucandra, SpAn-TI, Subsp.T.I.(K) · All rights reserved.</span>
+  <span class="ft">From Bali, world.</span>
+</footer>
 
 </body>
 </html>
@@ -51,37 +57,53 @@ const {
     display: flex; justify-content: space-between; align-items: center;
     padding: 0 3.5rem;
     height: 60px;
-    background: rgba(253,250,245,0.92);
+    background: rgba(10,13,12,0.82);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
   }
   .nav-mark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; font-weight: 500;
-    color: var(--ink2); letter-spacing: 0.04em; text-decoration: none;
+    font-family: 'Fragment Mono', monospace;
+    font-size: 0.92rem; font-weight: 400;
+    color: var(--paper); letter-spacing: 0.01em; text-decoration: none;
   }
-  .nav-mark i { font-style: italic; color: var(--rust); }
+  .nav-mark i { font-style: italic; color: var(--trace); }
   .nav-links { list-style: none; display: flex; gap: 2.25rem; }
   .nav-links a {
-    font-size: 0.7rem; font-weight: 500;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-ui); font-weight: 400;
     letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink3); text-decoration: none; transition: color 0.2s;
+    color: var(--dim); text-decoration: none; transition: color 0.2s;
   }
-  .nav-links a:hover, .nav-links a.on { color: var(--rust); }
+  .nav-links a:hover, .nav-links a.on { color: var(--trace); }
+
+  /* ─── TELEMETRY: signature live trace, sweeping under the nav ─── */
+  .telemetry {
+    position: fixed; top: 60px; left: 0; right: 0; z-index: 150;
+    height: 17px; overflow: hidden; display: flex;
+    background: rgba(10,13,12,0.82);
+    border-bottom: 1px solid var(--line);
+    opacity: 0.32; pointer-events: none;
+    animation: sweep 13s linear infinite;
+  }
+  .telemetry-track { flex-shrink: 0; width: 400px; height: 100%; display: block; }
+  .telemetry-track path { fill: none; stroke: var(--trace); stroke-width: 1.1; }
+  @keyframes sweep { from { transform: translateX(0); } to { transform: translateX(-400px); } }
+  @media (prefers-reduced-motion: reduce) { .telemetry { animation: none; } }
 
   /* ─── FOOTER ─── */
   footer {
-    background: #1C160E;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
     padding: 1.4rem 3.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .fc { font-size: 0.67rem; color: rgba(255,255,255,0.25); letter-spacing: 0.04em; }
+  .fc { font-family: 'Fragment Mono', monospace; font-size: var(--fs-micro); color: var(--dim2); letter-spacing: 0.02em; }
   .ft {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.82rem; font-style: italic;
-    color: rgba(255,255,255,0.2);
+    font-family: 'Literata', serif;
+    font-size: var(--fs-ui); font-style: italic;
+    color: var(--dim2);
   }
 
   @media (max-width: 1024px) {
@@ -91,6 +113,7 @@ const {
   }
   @media (max-width: 600px) {
     footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+    .telemetry { display: none; }
   }
 </style>
 

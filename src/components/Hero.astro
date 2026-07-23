@@ -3,17 +3,23 @@
 <section id="hero">
   <div class="hero-bg">
     <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="1200" cy="180" r="320" fill="none" stroke="rgba(28,22,14,0.045)" stroke-width="1"/>
-      <circle cx="1200" cy="180" r="240" fill="none" stroke="rgba(28,22,14,0.04)"  stroke-width="1"/>
-      <circle cx="1200" cy="180" r="160" fill="none" stroke="rgba(28,22,14,0.035)" stroke-width="1"/>
-      <circle cx="1200" cy="180" r="80"  fill="none" stroke="rgba(28,22,14,0.03)"  stroke-width="1"/>
-      <ellipse cx="1200" cy="180" rx="60" ry="120" fill="none" stroke="rgba(155,61,26,0.06)" stroke-width="1"/>
-      <ellipse cx="1200" cy="180" rx="60" ry="120" fill="none" stroke="rgba(155,61,26,0.06)" stroke-width="1" transform="rotate(45 1200 180)"/>
-      <ellipse cx="1200" cy="180" rx="60" ry="120" fill="none" stroke="rgba(155,61,26,0.06)" stroke-width="1" transform="rotate(90 1200 180)"/>
-      <ellipse cx="1200" cy="180" rx="60" ry="120" fill="none" stroke="rgba(155,61,26,0.06)" stroke-width="1" transform="rotate(135 1200 180)"/>
-      <line x1="180" y1="0"   x2="180" y2="900" stroke="rgba(28,22,14,0.04)"  stroke-width="1"/>
-      <line x1="200" y1="0"   x2="200" y2="900" stroke="rgba(28,22,14,0.025)" stroke-width="0.5"/>
-      <line x1="100" y1="820" x2="700" y2="820" stroke="rgba(155,61,26,0.1)"  stroke-width="1"/>
+      <!-- oscilloscope grid -->
+      <g stroke="rgba(237,231,218,0.05)" stroke-width="1">
+        <line x1="0" y1="150" x2="1440" y2="150" /><line x1="0" y1="300" x2="1440" y2="300" />
+        <line x1="0" y1="450" x2="1440" y2="450" /><line x1="0" y1="600" x2="1440" y2="600" />
+        <line x1="0" y1="750" x2="1440" y2="750" />
+        <line x1="240" y1="0" x2="240" y2="900" /><line x1="480" y1="0" x2="480" y2="900" />
+        <line x1="720" y1="0" x2="720" y2="900" /><line x1="960" y1="0" x2="960" y2="900" />
+        <line x1="1200" y1="0" x2="1200" y2="900" />
+      </g>
+      <!-- ECG trace, right field -->
+      <path d="M760 260 H960 L978 190 L998 340 L1018 260 H1160 L1174 220 L1188 300 L1202 260 H1440"
+        fill="none" stroke="rgba(75,190,138,0.32)" stroke-width="1.5" />
+      <!-- quantum interference wave, lower field -->
+      <path d="M700 700 Q 790 640, 880 700 T 1060 700 T 1240 700 T 1420 700"
+        fill="none" stroke="rgba(74,160,196,0.26)" stroke-width="1.2" />
+      <path d="M700 730 Q 790 790, 880 730 T 1060 730 T 1240 730 T 1420 730"
+        fill="none" stroke="rgba(74,160,196,0.14)" stroke-width="1.2" />
     </svg>
   </div>
 
@@ -25,9 +31,8 @@
 
   <div class="hero-row">
     <p class="hero-cred">
-      SpAn-TI, Subsp.T.I.(K) &mdash; Anesthesiologist &amp;<br />
-      Intensive Therapy Consultant &middot; 13 years ICU practice<br />
-      CTO &middot; Postgraduate Researcher, Udayana University
+      SpAn-TI, Subsp.T.I.(K) &mdash; Anesthesiologist &amp; Intensivist, in the ICU since 2012.<br /><br />
+      RSUP Ngoerah, Siloam Hospital Denpasar, Bali International Hospital &mdash; and a PhD student, Udayana University.
     </p>
     <div class="hero-right-col">
       <div class="hero-pills">
@@ -41,7 +46,7 @@
         <span class="hpill">Web3 · Substrate</span>
       </div>
       <div class="hero-btns">
-        <a href="#ventures" class="btn-rust">Explore Work</a>
+        <a href="#ventures" class="btn-primary">Explore Work</a>
         <a href="#contact" class="btn-outline">Get in Touch</a>
       </div>
     </div>
@@ -56,7 +61,7 @@
 <style>
   #hero {
     min-height: 100vh;
-    background: var(--sand);
+    background: var(--void);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -68,23 +73,24 @@
   .hero-bg svg { width: 100%; height: 100%; }
 
   .hero-eyebrow {
-    font-size: 0.68rem; font-weight: 600;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-ui); font-weight: 400;
     letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--rust); margin-bottom: 1.25rem;
+    color: var(--trace); margin-bottom: 1.25rem;
     display: flex; align-items: center; gap: 0.75rem;
     position: relative; z-index: 2;
   }
-  .hero-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--rust); }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--trace); }
 
   .hero-hl {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 8vw, 9rem);
-    font-weight: 300; line-height: 0.92;
-    color: var(--ink); letter-spacing: -0.02em;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-hero);
+    font-weight: 400; line-height: 0.98;
+    color: var(--paper); letter-spacing: -0.03em;
     margin-bottom: 1.75rem;
     position: relative; z-index: 2;
   }
-  .hero-hl em { font-style: italic; color: var(--rust2); }
+  .hero-hl em { font-style: italic; color: var(--trace); }
 
   .hero-row {
     display: flex; align-items: flex-end;
@@ -92,10 +98,10 @@
     position: relative; z-index: 2;
   }
   .hero-cred {
-    font-family: 'Crimson Pro', serif;
-    font-size: 1.05rem; font-style: italic;
-    color: var(--ink3); line-height: 1.6;
-    border-left: 2px solid var(--rust3);
+    font-family: 'Literata', serif;
+    font-size: var(--fs-lead); font-style: italic;
+    color: var(--dim); line-height: 1.6;
+    border-left: 2px solid var(--pulse);
     padding-left: 1rem; max-width: 400px;
   }
   .hero-right-col {
@@ -107,22 +113,23 @@
     gap: 0.45rem; justify-content: flex-end; max-width: 420px;
   }
   .hpill {
-    font-size: 0.65rem; font-weight: 500;
-    padding: 0.3rem 0.85rem; border-radius: 2px;
-    background: rgba(28,22,14,0.06);
-    border: 1px solid rgba(28,22,14,0.1);
-    color: var(--ink2); transition: all 0.2s;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-ui); font-weight: 400;
+    padding: 0.32rem 0.85rem; border-radius: 0;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--dim); transition: all 0.2s;
   }
-  .hpill:hover { background: var(--rust); color: #fff; border-color: var(--rust); }
+  .hpill:hover { background: var(--trace); color: var(--void); border-color: var(--trace); }
   .hero-btns { display: flex; gap: 0.75rem; }
 
   .scroll-hint {
     position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-    z-index: 2; opacity: 0.4;
+    z-index: 2; opacity: 0.5;
   }
-  .scroll-hint span { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3); }
-  .scroll-line { width: 1px; height: 32px; background: var(--ink3); animation: scrollpulse 2s ease-in-out infinite; }
+  .scroll-hint span { font-family: 'Fragment Mono', monospace; font-size: var(--fs-micro); letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); }
+  .scroll-line { width: 1px; height: 32px; background: var(--trace); animation: scrollpulse 2s ease-in-out infinite; }
   @keyframes scrollpulse { 0%,100%{ opacity: 0.3; } 50%{ opacity: 1; } }
 
   @media (max-width: 1024px) {
@@ -132,6 +139,7 @@
     .hero-pills { justify-content: flex-start; }
   }
   @media (max-width: 600px) {
-    .hero-hl { font-size: clamp(3rem, 12vw, 4.5rem); }
+    .hero-hl { font-size: clamp(2.6rem, 11vw, 4rem); }
+    .scroll-hint { display: none; }
   }
 </style>

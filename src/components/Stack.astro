@@ -5,7 +5,7 @@ const cols = [
     items: [
       { name: 'Rust',         sub: 'Native / Systems' },
       { name: 'Python',       sub: 'ML / Research' },
-      { name: 'LLVM',         sub: 'Compiler Backend' },
+      { name: 'Tolvex',       sub: 'Healthcare DSL' },
       { name: 'WebAssembly',  sub: 'Cross-platform' },
     ],
   },
@@ -41,7 +41,7 @@ const cols = [
 <section id="stack">
   <div class="sw">
     <div class="label">Technology</div>
-    <h2 class="display">From bare metal<br />to <em>quantum circuits</em>.</h2>
+    <h2 class="display display-sm">From bare metal<br />to <em>quantum circuits</em>.</h2>
     <div class="stack-cols rv">
       {cols.map((col) => (
         <div class="stack-col">
@@ -59,46 +59,49 @@ const cols = [
 </section>
 
 <style>
-  #stack { background: var(--sage); border-top: 1px solid var(--border); }
+  #stack { background: var(--void); border-top: 1px solid var(--line); }
 
   .stack-cols {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 2px;
+    border: 1px solid var(--line);
+    border-radius: 0;
     overflow: hidden;
   }
-  .stack-col { border-right: 1px solid var(--border); }
+  .stack-col { border-right: 1px solid var(--line); }
   .stack-col:last-child { border-right: none; }
 
   .stack-col-head {
     padding: 0.85rem 1.25rem;
-    background: var(--sand2);
-    border-bottom: 1px solid var(--border);
-    font-size: 0.62rem; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3);
+    background: var(--panel2);
+    border-bottom: 1px solid var(--line);
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-ui); font-weight: 400;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--pulse);
   }
   .stack-item {
     padding: 0.9rem 1.25rem;
-    border-bottom: 1px solid rgba(28,22,14,0.06);
-    font-size: 0.82rem; font-weight: 500; color: var(--ink2);
-    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--fs-body); font-weight: 400; color: var(--paper);
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem;
+    line-height: 1.25;
     transition: background 0.18s;
   }
   .stack-item:last-child { border-bottom: none; }
-  .stack-item:hover { background: var(--blush); }
-  .stack-sub { font-size: 0.65rem; color: var(--ink4); font-weight: 400; }
+  .stack-item:hover { background: var(--panel); }
+  .stack-sub { font-size: var(--fs-micro); color: var(--dim2); font-weight: 400; }
 
   @media (max-width: 1024px) {
     .stack-cols { grid-template-columns: 1fr 1fr; }
     .stack-col:nth-child(2) { border-right: none; }
-    .stack-col:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
-    .stack-col:nth-child(4) { border-right: none; border-top: 1px solid var(--border); }
+    .stack-col:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); }
+    .stack-col:nth-child(4) { border-right: none; border-top: 1px solid var(--line); }
   }
   @media (max-width: 600px) {
     .stack-cols { grid-template-columns: 1fr; }
-    .stack-col { border-right: none !important; border-top: 1px solid var(--border); }
+    .stack-col { border-right: none !important; border-top: 1px solid var(--line); }
     .stack-col:first-child { border-top: none; }
   }
 </style>
