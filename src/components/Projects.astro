@@ -3,6 +3,7 @@ const flagship = [
   {
     title: 'Tolvex',
     url: 'https://github.com/Tolvex/tolvex',
+    badge: 'Pre-alpha',
     desc: "A programming language built specifically for healthcare — Python/R-simple syntax, LLVM-compiled for near-C++ speed, with FHIR, HL7, DICOM, and genomic formats (FASTQ, VCF) as native types instead of bolted-on libraries. Compliance is a language feature too: built-in regulate blocks handle PHI tracking and HIPAA/GDPR automation, and it targets WebAssembly and RISC-V for wearables and edge devices. Previously called Medi, renamed at v0.1.6.",
     tags: ['LLVM-compiled', 'FHIR · HL7 · DICOM', 'WebAssembly · RISC-V', 'MIT'],
     links: [
@@ -14,10 +15,22 @@ const flagship = [
   {
     title: 'KadeDB',
     url: 'https://github.com/Tolvex/KadeDB',
+    badge: 'Pre-alpha',
     desc: "The database Tolvex needed and didn't have — one engine spanning relational, document, time-series, and graph storage, for healthcare data that's usually scattered across four different systems. A C++ core with GPU acceleration, a Rust services layer for the async/auth/API surface, and a C-based Lite client for wearables and edge nodes.",
     tags: ['Multi-model', 'C++ / Rust', 'GPU-accelerated', 'MIT'],
     links: [
       { label: 'GitHub', href: 'https://github.com/Tolvex/KadeDB' },
+    ],
+  },
+  {
+    title: 'SOKR',
+    url: 'https://github.com/sokr-rs/sokr',
+    badge: 'v0.3 · ABI Frozen',
+    desc: "A sovereign compute runtime in Rust: an immutable core exposing exactly three operations — capability, dispatch, completion — across a stable C ABI, with everything else (IR representations, substrate backends, language bindings) as swappable plugins. A GPU, CPU, QPU, neuromorphic, or photonic substrate is valid as long as it can answer those three questions. Core is ABI-frozen at v0.3.0, and the version-handshake protocol is formally specified in TLA+ and machine-checked with the TLC model checker.",
+    tags: ['no_std C ABI', 'Substrate-agnostic', 'TLA+ Verified', 'MIT/Apache-2.0'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/sokr-rs/sokr' },
+      { label: 'crates.io', href: 'https://crates.io/crates/sokr' },
     ],
   },
 ];
@@ -113,7 +126,7 @@ const projects = [
           <div class="flagship-item">
             <div class="fi-top">
               <a href={f.url} target="_blank" rel="noopener" class="fi-title">{f.title}</a>
-              <span class="vbadge bp">Pre-alpha</span>
+              <span class="vbadge bp">{f.badge}</span>
             </div>
             <p class="fi-desc">{f.desc}</p>
             <div class="fi-tags">
@@ -129,7 +142,7 @@ const projects = [
       </div>
     </div>
 
-    <p class="projects-intro">Tolvex and KadeDB above are the two I'm most invested in. Everything else is more exploratory — 110 repositories and 54 published crates in total, grouped here by theme.</p>
+    <p class="projects-intro">Tolvex, KadeDB, and SOKR above are the three I'm most invested in. Everything else is more exploratory — 110 repositories and 54 published crates in total, grouped here by theme.</p>
     <div class="projects-grid rv">
       {projects.map((p) => (
         <div class="proj-card">
@@ -175,7 +188,7 @@ const projects = [
   }
   .flagship-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
   .flagship-item {
     padding: 1.5rem 1.75rem 1.75rem;
@@ -269,11 +282,11 @@ const projects = [
 
   @media (max-width: 1024px) {
     .projects-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    .projects-grid { grid-template-columns: 1fr; }
     .flagship-grid { grid-template-columns: 1fr; }
     .flagship-item { border-right: none; border-bottom: 1px solid var(--line); }
     .flagship-item:last-child { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
   }
 </style>
