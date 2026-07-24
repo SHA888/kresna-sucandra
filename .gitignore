@@ -8,3 +8,7 @@ node_modules/
 .vscode/
 .idea/
 .windsurf/
+
+# local agent tooling state — not part of the site
+.claude/
+.harness-mem/
